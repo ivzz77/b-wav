@@ -1,6 +1,13 @@
-@abstract class_name Hitbox
-extends Entity
+class_name Hitbox
+#extends Component
+# not sure how it should even work tbh
+# component is just an enum that points to the right functionality implemented
+# in more or less static classes
 
-#@abstract func intersects(other : CircleHitbox) -> bool
-# actaully tbh.... maybe shouldn't even have it like that
-# a specific player hitbox type?...
+
+# should be a GENERALIZED hitbox that's NOT circular
+# -> define in terms of some fixedpointShape2D ?.....
+
+
+func intersects(other : Entity) -> bool:
+	return false

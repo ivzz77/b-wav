@@ -5,24 +5,18 @@ extends Node
 
 
 
-class BulletPool :
-	# equivalent of the list of entities
-	var bullets : Array[Bullet]
-	# array of components for easy iterating
-	var hitboxes : Array[Hitbox]
-	#var components : Array[Component]
-
-# wonder if this even helps w/ performance at all .....
-	
-	
-	
 var bp : BulletPool
-
 
 func _ready() -> void:
 	# do initialization of bullet pool (NOT made of nodes)
-	pass # Replace with function body.
-
+	for i in 32:
+		# surely 1024 is enough
+		bp._add32()
+		
+		bp.bullets.push_back(EmptyBullet.new())
+		bp.components.push_back(null)
+		
+		# why the hell is it called by .new() like that
 
 # called every physics tick
 # 
