@@ -3,23 +3,28 @@ extends Node
 # should act as a Singleton at least for its parent node (the Game board); other nodes should
 # be able to access its contents
 
+# ig this will just be the physics *provider*
+# the game node itself will represent the inner game board & all the data
 
 
-var bp : BulletPool
+# figure out scope semantics in gdscript & move to game node
 
 func _ready() -> void:
-	# do initialization of bullet pool (NOT made of nodes)
-	for i in 32:
-		# surely 1024 is enough
-		bp._add32()
-		
-		bp.bullets.push_back(EmptyBullet.new())
-		bp.components.push_back(null)
-		
-		# why the hell is it called by .new() like that
+	pass
 
 # called every physics tick
-# 
+# as much as like. one might want this to just be a physics provider
+# this like...
+#
+# asdlfjkasdlfj;l
+# unless i want to use _physics_process() in main instead??
+# waiting for another opinion ig
+
+# ideally the Game node really should just be a container of state
+# w/ the child nodes doing logic
+# rather than having game node needing to have logic to call inner stuff
+
+
 func _physics_process(delta: float) -> void:
 	pass
 

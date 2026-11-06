@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://banuurpw6j6j4" path="res://main.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://cp2r24eqoa5m0" path="res://core/physics.gd" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://d3nec2qeslogo" path="res://render/renderer.gd" id="3_feb5d"]
 
 [node name="Game" type="Node" unique_id=2068392402]
 script = ExtResource("1_80nbo")
@@ -9,4 +10,7 @@ script = ExtResource("1_80nbo")
 [node name="Physics" type="Node" parent="." unique_id=1344073428]
 script = ExtResource("2_e2o6t")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=957440188]
+[node name="Renderer" type="Node" parent="." unique_id=937334863]
+script = ExtResource("3_feb5d")
+
+[node name="Camera2D" type="Camera2D" parent="Renderer" unique_id=957440188]

@@ -17,7 +17,6 @@ var velocity : int2
 # including players ig etc
 var radius : int = 0
 
-
 # assume hitbox circular by default since its so easy....
 # hm....
 
@@ -30,6 +29,21 @@ func intersects(other : Entity) -> bool:
 	# but probably not for the scale we're working with
 	
 	return dist < radius + other.radius
+
+
+
+# like copy constructor but doesn't actually create new instance
+# BE VERY CAREFUL ACTUALLY COPY EVERY FIELD
+func _copy(e : Entity) -> void:
+	x = e.x
+	y = e.y
+	velocity.x = e.velocity.x
+	velocity.y = e.velocity.y
+	
+	radius = e.radius
+	
+
+
 
 
 # returns in same units

@@ -13,6 +13,10 @@ class_name BulletPool
 
 
 
+static var EMPTY : Bullet
+
+
+
 # equivalent of the list of entities
 var bullets : Array[Bullet]
 # array of components for easy iterating
@@ -20,20 +24,24 @@ var components : Array[Component]
 
 
 # internal map for tracking which index is active ('set')
+# should only be used internally
+# bullets should have 'active' field for other things to access
 var _set_map : PackedInt32Array
 # likely the most efficient
 # modern cpus work w/ 32b usually yeah
 
 
-# maybe return error if pool full or some
+# maybe return error if pool full or something...
 func spawn(b : Bullet) -> void:
 	var i = _get_next_free()
 	bullets[i] = b
 	
+	bullets[i].active = true
 	_set_map_bit(i)
 
 
 func despawn(i : int) -> void:
+	bullets[i].active = false
 	_unset_map_bit(i)
 
 
