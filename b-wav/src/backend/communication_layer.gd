@@ -36,8 +36,9 @@ signal character_created(token: int, type: CharacterType)
 signal character_health_changed(token: int, health: int)
 
 # TODO: use an enum for movement state.
-## Emitted when a character changes its movement state (such as regular, focused)
-signal character_movement_state_changed(token: int, state: int)
+## Emitted when a character changes its movement state (such as regular, focused,
+## stunned)
+signal character_movement_mode_changed(token: int, state: int)
 
 ## Emitted when a new bullet is created.
 signal bullet_created(token: int, type: BulletType)
