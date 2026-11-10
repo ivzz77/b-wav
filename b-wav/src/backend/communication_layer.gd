@@ -43,13 +43,29 @@ signal character_movement_mode_changed(token: int, state: int)
 ## Emitted when a new bullet is created.
 signal bullet_created(token: int, type: BulletType)
 
-## Emitted when an entity is destroyed internally. The token of this entity will
-## never be used again. The entity must vanish immediately when this signal is
-## emitted (but its data can be cleaned up later).
+## Emitted when an entity is removed from the world. The entity should no longer
+## be visible and create a destruction effect if it has one. The entity will no
+## longer be simulated, so calls to [method get_entity_transform] with
+## [param token] will return the last known position. The next signal with this
+## token will either be [signal entity_respawn] or [signal entity_destroyed].
+signal entity_despawn(token: int)
+
+## Emitted when an entity is respawned into the world from the despawn state.
+## The entity should become visible again and any ongoing destruction effect 
+## should be removed (if there is an effect done for entity creation, such
+## as following [signal bullet_created], it should not be created here).
+signal entity_respawn(token: int)
+
+## Emitted when an entity is destroyed irreversibly. The token of this entity will
+## never be used again. This signal will only be emitted after
+## [signal entity_respawn], and should trigger removal of any data corresponding
+## to the entity.
 signal entity_destroyed(token: int)
 
 ## Get an entity's current transform. Value should change independently of the
-## physics rate so this method should be called every frame for each entity.
+## physics rate so this method should be called every frame on each visible
+## entity. [color=yellow]Warning: calling this method with the token of a
+## destroyed entity will return a nonsense value and produce a warning[/color].
 @abstract func get_entity_transform(token: int) -> Transform2D
 
 ## Configures a [Callable] to be invoked whenever the game requires local input.
