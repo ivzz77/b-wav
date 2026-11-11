@@ -64,7 +64,7 @@ signal entity_destroyed(token: int)
 
 ## Get an entity's current transform. Value should change independently of the
 ## physics rate so this method should be called every frame on each visible
-## entity. [color=yellow]Warning: calling this method with the token of a
+## entity. [color=gold]Warning: calling this method with the token of a
 ## destroyed entity will return a nonsense value and produce a warning[/color].
 @abstract func get_entity_transform(token: int) -> Transform2D
 

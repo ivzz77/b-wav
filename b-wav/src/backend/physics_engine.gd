@@ -67,3 +67,15 @@ var _tick: int
 ## will simulate step [code]tick+1[/code]. Returns false if that tick cannot
 ## be recovered.
 @abstract func rollback(tick: int) -> bool
+
+
+## Get a bullet's current location this tick. Will return the most recent
+## position of a despawned bullet and nonsense data for a destroyed bullet.
+@abstract func get_bullet_position(bullet_token: int) -> Transform2D
+
+
+## Get a bullet's predicted position in the next tick. [color=gold]Warning:
+## this method is speculative. A bullet may be despawned before the next tick,
+## or may move differently than predicted. Use only for visual smoothing
+## (lerping).[/color]
+@abstract func get_bullet_future_position(bullet_token: int) -> Transform2D
