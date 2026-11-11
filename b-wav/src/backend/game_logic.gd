@@ -16,30 +16,31 @@ extends RefCounted
 ## received. The game logic script is expected to change frequently as the game
 ## is iterated on.
 ## [br][br]
-## Sending messages from this script are done through either calling methods
-## directly on injected objects (such as on the methods provided by
-## [member physics]) or by using the signals provided in this class. This script
-## should [color=orange_red]never[/color]
-## call its own event methods directly, or connect to any signals, as this may
-## bypass important in-between code.
+## Sending messages from this script are done by calling methods
+## directly on injected objects (see [member physics]). This script
+## should [color=orange_red]never[/color] call its own event methods directly,
+## as this may bypass important in-between code.
 ## [br][br]
 ## This script is permitted to create its own helper methods and classes.
 
 
-## Request a character change its health. Event [method character_health_changed]
-## will typically fire immediately after this signal, but more may be going on
-## under the hood, so avoid calling that method directly.
-signal change_character_health(character_token: int, health: int)
-
-
-## A physics engine injected before [method initialize] for the game logic
+## A physics engine proxy injected before  for the game logic
 ## script to use.
-var physics: PhysicsEngine:
+var physics: PhysicsActions:
 	get:
 		return _physics
 
 # Where the physics engine should be injected
-var _physics: PhysicsEngine
+var _physics: PhysicsActions
+
+
+## An interface for performing several game actions. Injected before
+## [method initialize].
+var game: GameActions:
+	get:
+		return _game
+
+var _game: GameActions
 
 
 ## Fired once before all other events.
