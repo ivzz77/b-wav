@@ -33,13 +33,12 @@ signal entity_respawned(token: int)
 signal entity_destroyed(token: int)
 
 
-## Returns the current tick (the tick most recently simulated).
+## The current tick of the engine (the tick most recently simulated).
 var tick: int:
-	get():
-		return _tick
+	get = get_tick
 
-var _tick: int
-
+## Returns the current tick (the tick most recently simulated).
+@abstract func get_tick() -> int
 
 ## Spawn a new character. Returns a Token representing that character. Parameter
 ## [param position] is the starting location of the new character.
@@ -68,11 +67,9 @@ var _tick: int
 ## be recovered.
 @abstract func rollback(tick: int) -> bool
 
-
 ## Get a bullet's current location this tick. Will return the most recent
 ## position of a despawned bullet and nonsense data for a destroyed bullet.
 @abstract func get_bullet_position(bullet_token: int) -> Transform2D
-
 
 ## Get a bullet's predicted position in the next tick. [color=gold]Warning:
 ## this method is speculative. A bullet may be despawned before the next tick,
