@@ -34,6 +34,10 @@ signal entity_respawned(token: int)
 ## token will never be used again.
 signal entity_destroyed(token: int)
 
+## The final signal emitted after a simulation step. This signal is always
+## emitted when the tick changes.
+signal post_tick()
+
 
 ## The current tick of the engine (the tick most recently simulated).
 var tick: int:
@@ -60,8 +64,9 @@ var tick: int:
 ## if it doesn't exist).
 @abstract func despawn_bullet(bullet_token: int) -> bool
 
-## Simulate the next tick. Positions of all entities are updated first before
-## signals are emitted.
+## Simulate the next tick. Positions of all entities are updated first, then
+## signals are emitted. Signal [signal post_tick] is always emitted following
+## this method and any other signals.
 @abstract func simulate() -> void
 
 ## Attempt to rollback to a previous tick. The next call to [method simulate]

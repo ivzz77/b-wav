@@ -28,6 +28,10 @@ func _init(physicsEngine: PhysicsEngine):
 		func(token: int):
 			entity_destroyed.emit(token)
 	)
+	_physicsEngine.post_tick.connect(
+		func():
+			post_tick.emit()
+	)
 
 func get_tick() -> int:
 	return _physicsEngine.get_tick()
