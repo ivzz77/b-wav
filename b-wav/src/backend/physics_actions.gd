@@ -7,11 +7,19 @@ extends RefCounted
 ## here are not permitted for a game logic script to use.
 
 
+## The current game tick.
+var tick: int:
+	get = get_tick
+
 var _physics: PhysicsEngine
 
 
 func _init(physics: PhysicsEngine):
 	_physics = physics
+
+
+func get_tick() -> int:
+	return _physics.get_tick()
 
 
 ## Spawn a new character. Returns a Token representing that character. Parameter

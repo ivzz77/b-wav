@@ -24,7 +24,7 @@ extends RefCounted
 ## This script is permitted to create its own helper methods and classes.
 
 
-## A physics engine proxy injected before  for the game logic
+## A physics engine proxy injected before [method initialize] for the game logic
 ## script to use.
 var physics: PhysicsActions:
 	get:
@@ -49,15 +49,14 @@ func initialize() -> void:
 
 
 ## Fired every processing tick.
-@warning_ignore("unused_parameter")
-func process(tick: int) -> void:
+func process() -> void:
 	pass
 
 
 ## Fired whenever the current movement input changes for each character. Fires
 ## at most once per tick.
 @warning_ignore("unused_parameter")
-func character_input_changed(tick: int, character_token: int, movement: Vector2) -> void:
+func character_input_changed(character_token: int, movement: Vector2) -> void:
 	pass
 
 
@@ -66,13 +65,13 @@ func character_input_changed(tick: int, character_token: int, movement: Vector2)
 ## [param delta] is the amount of time between the action and this tick, which
 ## can be at most the time between two consecutive ticks.
 @warning_ignore("unused_parameter")
-func character_action_changed(tick: int, action: int, delta: float) -> void:
+func character_action_changed(action: int, delta: float) -> void:
 	pass
 
 
 ## Fired on a character's collision with a bullet.
 @warning_ignore("unused_parameter")
-func character_collided_bullet(tick: int, character_token: int, bullet_token: int) -> void:
+func character_collided_bullet(character_token: int, bullet_token: int) -> void:
 	pass
 
 
@@ -80,12 +79,12 @@ func character_collided_bullet(tick: int, character_token: int, bullet_token: in
 ## twice, once for each character as [param this_character_token], so the character
 ## identified by [param other_character_token] should not be modified.
 @warning_ignore("unused_parameter")
-func character_collided_character(tick: int, this_character_token: int, other_character_token: int) -> void:
+func character_collided_character(this_character_token: int, other_character_token: int) -> void:
 	pass
 
 
 ## Fired when a character's health should change. Since health changes may happen
 ## externally, this event should be used instead of relying on character collisions.
 @warning_ignore("unused_parameter")
-func character_health_changed(tick: int, character_token: int, health: int) -> void:
+func character_health_changed(character_token: int, health: int) -> void:
 	pass

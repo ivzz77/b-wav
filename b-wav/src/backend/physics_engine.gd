@@ -10,7 +10,9 @@ extends RefCounted
 ## implement any collision code. Instead, the game logic script should expect to
 ## receive relevant events to act upon, such as
 ## [method GameLogic.character_collided_bullet].
-
+## [br][br]
+## Update order on every simulation step must be:[br]
+## Simulate next entity positions -> increment [param tick] -> emit signals
 
 ## Emitted when a character collides with a bullet.
 signal character_collided_bullet(character_token: int, bullet_token: int)
