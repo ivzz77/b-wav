@@ -1,0 +1,230 @@
+[gd_scene format=3 uid="uid://brp188w2g5ata"]
+
+[ext_resource type="Script" uid="uid://bp145h76t83fg" path="res://frontend/settings.gd" id="1_yo5cw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0xig"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="MainMenuMockup" type="Control" unique_id=875885582]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="Control" parent="." unique_id=1215098983]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Main" unique_id=110855023]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -132.0
+offset_right = 140.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r0xig")
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/PanelContainer" unique_id=880553524]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/PanelContainer/MarginContainer" unique_id=919985038]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="Main/PanelContainer/MarginContainer/VBoxContainer" unique_id=1216450271]
+layout_mode = 2
+text = "Play"
+
+[node name="Options" type="Button" parent="Main/PanelContainer/MarginContainer/VBoxContainer" unique_id=1479673507]
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Main/PanelContainer/MarginContainer/VBoxContainer" unique_id=960505033]
+layout_mode = 2
+text = "Quit"
+
+[node name="Settings" type="Control" parent="." unique_id=765771766]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yo5cw")
+
+[node name="PanelContainer" type="PanelContainer" parent="Settings" unique_id=1715081162]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -281.0
+offset_top = -147.0
+offset_right = 281.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r0xig")
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings/PanelContainer" unique_id=1416667028]
+layout_mode = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 9
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/PanelContainer/MarginContainer" unique_id=2101190818]
+layout_mode = 2
+
+[node name="TabBar" type="TabBar" parent="Settings/PanelContainer/MarginContainer/VBoxContainer" unique_id=1111760835]
+layout_mode = 2
+current_tab = 0
+tab_count = 3
+tab_0/title = "Video"
+tab_1/title = "Controls"
+tab_2/title = "Game Settings"
+
+[node name="HSeparator" type="HSeparator" parent="Settings/PanelContainer/MarginContainer/VBoxContainer" unique_id=872662649]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer" unique_id=1701656501]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2076376663]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Master"
+
+[node name="HSeparator" type="HSeparator" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1263115620]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.09
+
+[node name="HSlider" type="HSlider" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=442182165]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer" unique_id=1240455218]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=65902055]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="HSeparator" type="HSeparator" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1863540735]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.09
+
+[node name="HSlider" type="HSlider" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1361449447]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer" unique_id=1306077856]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=2082989279]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Effects"
+
+[node name="HSeparator" type="HSeparator" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1665277437]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.09
+
+[node name="HSlider" type="HSlider" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=93661859]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer" unique_id=148742893]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=1056706025]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Window Mode"
+
+[node name="HSeparator" type="HSeparator" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=1808093414]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.09
+
+[node name="OptionButton" type="OptionButton" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=1936256804]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+selected = 0
+item_count = 3
+popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Borderless Windowed"
+popup/item_1/id = 1
+popup/item_2/text = "Windowed"
+popup/item_2/id = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer" unique_id=1883049481]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=348885154]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Resolution"
+
+[node name="HSeparator" type="HSeparator" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=663767603]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.09
+
+[node name="OptionButton" type="OptionButton" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1794204618]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+selected = 0
+item_count = 3
+popup/item_0/text = "1280 x 720"
+popup/item_0/id = 0
+popup/item_1/text = "1900 x 1600"
+popup/item_1/id = 1
+popup/item_2/text = "1920 x 1080"
+popup/item_2/id = 2
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer" unique_id=582788673]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=1756048061]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Vsync"
+
+[node name="HSeparator" type="HSeparator" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=1014458720]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="CheckBox" type="CheckBox" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=276856869]
+layout_mode = 2
+
+[connection signal="value_changed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HSlider" to="Settings" method="_on_volume_value_changed"]
