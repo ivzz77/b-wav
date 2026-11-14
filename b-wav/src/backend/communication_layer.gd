@@ -1,3 +1,4 @@
+@warning_ignore_start("unused_signal")
 @abstract class_name CommunicationLayer
 extends Node
 ## Interface for communications between the interal game state and external game

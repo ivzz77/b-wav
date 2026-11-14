@@ -1,9 +1,12 @@
+@warning_ignore_start("unused_parameter")
 class_name PhysicsEngineView
 extends PhysicsEngine
 ## A proxy for [PhysicsEngine] allowing read-only access.
 
 var _physicsEngine: PhysicsEngine
 
+
+## Initialize a proxy where [param physicsEngine] is the target object.
 func _init(physicsEngine: PhysicsEngine):
 	_physicsEngine = physicsEngine
 
@@ -28,44 +31,51 @@ func _init(physicsEngine: PhysicsEngine):
 		func(token: int):
 			entity_destroyed.emit(token)
 	)
+	_physicsEngine.pre_character_tick.connect(
+		func():
+			pre_character_tick.emit()
+	)
 	_physicsEngine.post_tick.connect(
 		func():
 			post_tick.emit()
 	)
 
+
 func get_tick() -> int:
 	return _physicsEngine.get_tick()
 
-@warning_ignore("unused_parameter")
+
 func spawn_character(type: CharacterType, position: Transform2D) -> int:
 	push_error("PhysicsEngineView cannot call spawn_character()")
 	return 0
 
-@warning_ignore("unused_parameter")
+
 func spawn_bullet(type: BulletType, position: Transform2D) -> int:
 	push_error("PhysicsEngineView cannot call spawn_bullet()")
 	return 0
 
-@warning_ignore("unused_parameter")
-func despawn_character(character_token: int) -> bool:
-	push_error("PhysicsEngineView cannot call despawn_character()")
+
+func despawn_entity(token: int) -> bool:
+	push_error("PhysicsEngineView cannot call despawn_entity()")
 	return false
 
-@warning_ignore("unused_parameter")
-func despawn_bullet(bullet_token: int) -> bool:
-	push_error("PhysicsEngineView cannot call despawn_bullet()")
-	return false
 
 func simulate() -> void:
 	push_error("PhysicsEngineView cannot call simulate()")
 
-@warning_ignore("unused_parameter", "shadowed_variable_base_class")
-func rollback(tick: int) -> bool:
+
+func rollback(past_tick: int) -> bool:
 	push_error("PhysicsEngineView cannot call rollback()")
 	return false
 
-func get_bullet_position(bullet_token: int) -> Transform2D:
-	return _physicsEngine.get_bullet_position(bullet_token)
 
-func get_bullet_future_position(bullet_token: int) -> Transform2D:
-	return _physicsEngine.get_bullet_future_position(bullet_token)
+func get_entity_position(token: int) -> Transform2D:
+	return _physicsEngine.get_entity_position(token)
+
+
+func get_entity_future_position(token: int) -> Transform2D:
+	return _physicsEngine.get_entity_future_position(token)
+
+
+func set_character_velocity(character_token: int, velocity: Vector2) -> void:
+	push_error("PhysicsEngineView cannot call set_character_velocity()")

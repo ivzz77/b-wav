@@ -1,3 +1,4 @@
+@warning_ignore_start("unused_signal")
 @abstract class_name PhysicsEngine
 extends RefCounted
 ## Interface for the component which processes motion and collisions.
@@ -34,8 +35,13 @@ signal entity_respawned(token: int)
 ## token will never be used again.
 signal entity_destroyed(token: int)
 
-## The final signal emitted after a simulation step. This signal is always
-## emitted when the tick changes.
+## Emitted during [method simulate] immediately before characters are simulated.
+## Useful for changing character velocity at the last possible moment to
+## minimize input lag.
+signal pre_character_tick()
+
+## Emitted after a simulation step, following all other signals emitted during
+## this tick. This signal is always emitted after [member tick] changes.
 signal post_tick()
 
 
@@ -54,15 +60,10 @@ var tick: int:
 ## [param position] is the starting location of the new bullet.
 @abstract func spawn_bullet(type: BulletType, position: Transform2D) -> int
 
-## Despawn a character. This character will no longer simulate and may be
-## destroyed in the near future. Returns false if the character was not
+## Despawn an entity. This entity will no longer simulate and may be destroyed
+## in the near future. Returns false if the entity was not
 ## despawned (such as if it doesn't exist).
-@abstract func despawn_character(character_token: int) -> bool
-
-## Despawn a bullet. This bullet will no longer simulate and may be destroyed
-## in the near future. Returns false if the bullet was not despawned (such as
-## if it doesn't exist).
-@abstract func despawn_bullet(bullet_token: int) -> bool
+@abstract func despawn_entity(token: int) -> bool
 
 ## Simulate the next tick. Positions of all entities are updated first, then
 ## signals are emitted. Signal [signal post_tick] is always emitted following
@@ -70,16 +71,20 @@ var tick: int:
 @abstract func simulate() -> void
 
 ## Attempt to rollback to a previous tick. The next call to [method simulate]
-## will simulate step [code]tick+1[/code]. Returns false if that tick cannot
+## will simulate step [code]past_tick+1[/code]. Returns false if that tick cannot
 ## be recovered.
-@abstract func rollback(tick: int) -> bool
+@abstract func rollback(past_tick: int) -> bool
 
-## Get a bullet's current location this tick. Will return the most recent
-## position of a despawned bullet and nonsense data for a destroyed bullet.
-@abstract func get_bullet_position(bullet_token: int) -> Transform2D
+## Get an entity's current location this tick. Will return the most recent
+## position of a despawned entity and nonsense data for a destroyed entity.
+@abstract func get_entity_position(token: int) -> Transform2D
 
-## Get a bullet's predicted position in the next tick. [color=gold]Warning:
-## this method is speculative. A bullet may be despawned before the next tick,
+## Get an entity's predicted position in the next tick. [color=gold]Warning:
+## this method is speculative. An entity may be despawned before the next tick,
 ## or may move differently than predicted. Use only for visual smoothing
 ## (lerping).[/color]
-@abstract func get_bullet_future_position(bullet_token: int) -> Transform2D
+@abstract func get_entity_future_position(token: int) -> Transform2D
+
+## Change a character's current velocity. Must be set to create character motion
+## as characters do not move on their own.
+@abstract func set_character_velocity(character_token: int, velocity: Vector2) -> void
