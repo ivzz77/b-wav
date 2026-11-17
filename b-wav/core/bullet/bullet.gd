@@ -14,9 +14,7 @@ extends Entity
 var active : bool = false
 
 
-# maybe should be animated?...
-# ig if so better to have custom type that's just. static loop
-var sprite : Sprite2D = null
+
 
 # ALL BULLETS HAVE CIRCULAR HITBOX BY DEFAULT
 # set radius to 0 for disable

@@ -8,9 +8,28 @@
 # should not do its own processing
 
 
+# reading beam's backend stuff,
+# seems like the exact implementation of entity is not specified
+# only that it needs a unique token
+
+var token : int
+
+# one must imagine there's some way to find the entity by token
+#
+
+
+
 var x : int
 var y : int
 var velocity : int2
+
+# can be null, be prepared to handle it when rendering
+var sprite = null
+# erm actually we do NOT want each entity to have a sprite2D, which is a NODE
+# just point to a shared resource
+# wonder if such a shared resource may as well be a template definec by subclasses then
+
+
 
 
 # everything may as well have it
