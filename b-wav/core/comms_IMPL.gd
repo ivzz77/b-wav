@@ -40,4 +40,7 @@ func _ready() -> void:
 			bp.bullets.push_back(b)
 			var c = Component.new
 			bp.components.push_back(c)
+			
+			
+	characters.append()
 		

@@ -40,6 +40,13 @@ func _process(delta: float) -> void:
 # since it's not shared state just display it's fine to use delta
 func render(e : Entity, delta: float) -> void:
 	# draw the sprite associated w/ entity
+	
+	#	should probably use renderingserver api actaully
+	#	 & the character/bullet etc shared resource should contain a 
+	#	 actual canvasitem (sprite2d)? which we will fetch the
+	#	resource id (rid) from & call renderingserver stuff
+	
+	
 	pass
 	
 # maybe each entity should get its own render function come to think of it

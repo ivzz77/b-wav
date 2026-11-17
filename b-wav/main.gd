@@ -14,5 +14,9 @@ extends Node
 # init
 func _ready() -> void:
 	Engine.physics_jitter_fix = 0
+	
+	#	no idea if this is how its supposed to be used
+	#	 TODO test
+	InputMap.action_add_event("kinetic_atk", InputEventMouseMotion.new())
 	# ensure physics ticks sync with real time
 	
