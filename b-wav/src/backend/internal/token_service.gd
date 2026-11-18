@@ -42,6 +42,11 @@ static func extract_nonce(token: int) -> int:
 	return low
 
 
+## Same as [code]extract_nonce(token) == nonce[/code]
+static func has_nonce(token: int, nonce: int) -> bool:
+	return extract_nonce(token) == nonce
+
+
 ## Retrieve a unique number only used once.
 func get_nonce() -> int:
 	# check if passed 32bit size

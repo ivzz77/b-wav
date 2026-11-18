@@ -3,6 +3,7 @@ class_name PhysicsEngineView
 extends PhysicsEngine
 ## A proxy for [PhysicsEngine] allowing read-only access.
 
+
 var _physicsEngine: PhysicsEngine
 
 
@@ -19,21 +20,33 @@ func _init(physicsEngine: PhysicsEngine):
 		func(character_token: int, other_character_token: int):
 			character_collided_character.emit(character_token, other_character_token)
 	)
-	_physicsEngine.entity_despawned.connect(
-		func(token: int):
-			entity_despawned.emit(token)
+	_physicsEngine.character_despawned.connect(
+		func(character_token: int):
+			character_despawned.emit(character_token)
 	)
-	_physicsEngine.entity_respawned.connect(
-		func(token: int):
-			entity_respawned.emit(token)
+	_physicsEngine.character_respawned.connect(
+		func(character_token: int):
+			character_respawned.emit(character_token)
 	)
-	_physicsEngine.entity_destroyed.connect(
-		func(token: int):
-			entity_destroyed.emit(token)
+	_physicsEngine.character_destroyed.connect(
+		func(character_token: int):
+			character_destroyed.emit(character_token)
 	)
-	_physicsEngine.pre_character_tick.connect(
+	_physicsEngine.bullet_despawned.connect(
+		func(bullet_token: int):
+			bullet_despawned.emit(bullet_token)
+	)
+	_physicsEngine.bullet_respawned.connect(
+		func(bullet_token: int):
+			bullet_respawned.emit(bullet_token)
+	)
+	_physicsEngine.bullet_destroyed.connect(
+		func(bullet_token: int):
+			bullet_destroyed.emit(bullet_token)
+	)
+	_physicsEngine.before_character_tick.connect(
 		func():
-			pre_character_tick.emit()
+			before_character_tick.emit()
 	)
 	_physicsEngine.post_tick.connect(
 		func():
@@ -45,19 +58,22 @@ func get_tick() -> int:
 	return _physicsEngine.get_tick()
 
 
-func spawn_character(type: CharacterType, position: Transform2D) -> int:
+func spawn_character(type: CharacterDefinition, position: Vector2i) -> int:
 	push_error("PhysicsEngineView cannot call spawn_character()")
 	return 0
 
 
-func spawn_bullet(type: BulletType, position: Transform2D) -> int:
+func despawn_character(character_token: int) -> void:
+	push_error("PhysicsEngineView cannot call despawn_entity()")
+
+
+func spawn_bullet(type: BulletType, pose: Vector3i) -> int:
 	push_error("PhysicsEngineView cannot call spawn_bullet()")
 	return 0
 
 
-func despawn_entity(token: int) -> bool:
+func despawn_bullet(bullet_token: int) -> void:
 	push_error("PhysicsEngineView cannot call despawn_entity()")
-	return false
 
 
 func simulate() -> void:
@@ -69,13 +85,17 @@ func rollback(past_tick: int) -> bool:
 	return false
 
 
-func get_entity_position(token: int) -> Transform2D:
-	return _physicsEngine.get_entity_position(token)
-
-
-func get_entity_future_position(token: int) -> Transform2D:
-	return _physicsEngine.get_entity_future_position(token)
+func get_character_position(character_token: int) -> Vector2i:
+	return _physicsEngine.get_character_position(character_token)
 
 
 func set_character_velocity(character_token: int, velocity: Vector2) -> void:
 	push_error("PhysicsEngineView cannot call set_character_velocity()")
+
+
+func get_bullet_pose(bullet_token: int) -> Vector3i:
+	return _physicsEngine.get_bullet_pose(bullet_token)
+
+
+func get_bullet_future_pose(bullet_token: int) -> Vector3i:
+	return _physicsEngine.get_bullet_future_pose(bullet_token)
