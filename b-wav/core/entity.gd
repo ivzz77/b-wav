@@ -1,6 +1,7 @@
 @abstract class_name Entity
-#extends Object
+extends Object
 # tbh is that even necessary
+# yeah ig....
 
 # the most basic element to be acted upon by our physics engine
 # well lets just say all entities may as well have velocity

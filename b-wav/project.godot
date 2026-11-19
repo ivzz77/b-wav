@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Token="*uid://rhjfwpcpw3f1"
+Consts="*uid://cskqrqriom5uy"
+Singletons="*uid://bxc0u8mxgkn01"
 
 [display]
 

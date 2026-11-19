@@ -7,6 +7,10 @@ var il : InputLayer
 
 
 
+func _init(i : InputLayer):
+	il = i
+
+
 
 func process():
 	il.refresh()

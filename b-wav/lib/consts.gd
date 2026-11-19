@@ -20,9 +20,11 @@ extends Node
 
 
 static var ZERO2 : int2
+static var DIR_RIGHT : intdir
+static var PROP_ONE : intprop
+
 static var EMPTY_B : Bullet = Bullet.new()
 static var EMPTY_B_TYPE : BulletType
-static var PROP_ONE : intprop
 static var MOUSE_MOTION : InputEventMouseMotion
 
 # as far as i know, autoloading happens before anything else
@@ -36,6 +38,8 @@ static var MOUSE_MOTION : InputEventMouseMotion
 func _ready() -> void:
 	ZERO2.x = 0
 	ZERO2.y = 0
+	
+	DIR_RIGHT.arg = 0
 	
 	EMPTY_B_TYPE.radius = 0
 	EMPTY_B_TYPE.speed = 0

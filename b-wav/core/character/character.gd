@@ -17,6 +17,14 @@ var move_lock : int		# equivalent of stun timer
 var atk_lock : int
 var inv_timer : int
 
+# maybe expose to game settings @ some point TODOn't
+const STUN_THRESHHOLD : int = 2
+var stun_counter : int
+
+# not a comprehensive state list; just things that are binary
+# might make bit flags somehow
+enum state {NORMAL, FOCUSED}
+
 
 # things from mns not sure if we will have exactly the same
 #var action_lock : int
@@ -31,9 +39,21 @@ var hearts_left : int
 # not sure if this is state should be tracked by gamelogic script instead
 
 
+@warning_ignore("shadowed_variable_base_class")
+func _init(c : CharacterDefinition, x : int, y : int):
+	base = c
+	self.x = x
+	self.y = y
+	reset()
+	
+	direction = intdir.new(0)
+	
+	pass
+
 
 func reset():
 	hearts_left = 4
+	stun_counter = 0
 	speed_mult = Const.PROP_ONE
 	reset_timers()
 	# technically round reset should  add some action lock until round

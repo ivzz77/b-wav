@@ -3,6 +3,8 @@ class_name int2
 extends RefCounted
 # at least let these be garbage collected ig
 
+# TODO oh shit apparently Vector2i exists
+
 
 var x : int
 var y : int

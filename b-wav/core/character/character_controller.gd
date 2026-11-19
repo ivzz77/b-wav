@@ -18,11 +18,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-# call this in the gamelogic layer
+# call this in the gamelogic layer every tick
 @abstract func process()
 	#	set char velocity according to etc
 	# do other stuff to translate input to character state 

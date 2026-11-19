@@ -1,15 +1,19 @@
+class_name LocalPVPLogic
 extends GameLogic
 
 
+# dictionary bc there should really only be 2 plaryers
+# ui needs to handle differently
+var active_char_controllers : Dictionary[StringName, CharacterController]
 
-var active_char_controllers
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
+	active_char_controllers["p1"] = PlayerController.new(Singleton.P1)
+	active_char_controllers["p2"] = PlayerController.new(Singleton.P1)
+	#	TODO add keybinds for p2 lol
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	pass
+# called in comms layer every tick
+func process():
+	for key in active_char_controllers:
+		active_char_controllers[key].process()
