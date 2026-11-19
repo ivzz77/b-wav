@@ -17,6 +17,6 @@ func _ready() -> void:
 	
 	#	no idea if this is how its supposed to be used
 	#	 TODO test
-	InputMap.action_add_event("kinetic_atk", InputEventMouseMotion.new())
+	InputMap.action_add_event("kinetic_atk", Const.MOUSE_MOTION)
 	# ensure physics ticks sync with real time
 	

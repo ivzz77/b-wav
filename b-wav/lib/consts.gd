@@ -1,3 +1,4 @@
+class_name Const
 extends Node
 
 # let it be known, i tried, but gdscript has other plans
@@ -20,8 +21,9 @@ extends Node
 
 static var ZERO2 : int2
 static var EMPTY_B : Bullet = Bullet.new()
-
-
+static var EMPTY_B_TYPE : BulletType
+static var PROP_ONE : intprop
+static var MOUSE_MOTION : InputEventMouseMotion
 
 # as far as i know, autoloading happens before anything else
 # so these values *should* be set correctly when used
@@ -34,3 +36,13 @@ static var EMPTY_B : Bullet = Bullet.new()
 func _ready() -> void:
 	ZERO2.x = 0
 	ZERO2.y = 0
+	
+	EMPTY_B_TYPE.radius = 0
+	EMPTY_B_TYPE.speed = 0
+	EMPTY_B_TYPE.sprite = null
+	# for our purposes right now we don't want this to ever happen
+	# should assert sprite !null	
+	
+	PROP_ONE = intprop.new(intprop.PROP_SUBDIVISION)
+	
+	MOUSE_MOTION = InputEventMouseMotion.new()

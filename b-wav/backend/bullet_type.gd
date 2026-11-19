@@ -13,3 +13,8 @@ var radius : int
 var sprite : Sprite2D
 # apparently can do instanced rendering w/ this
 # maybe a AnimatedSprite2D ...
+
+func _init(s : int, r : int, spr : Sprite2D):
+	speed = s
+	radius = r
+	sprite = spr
