@@ -31,7 +31,7 @@ extends Node
 ## should not expect to receive this same data format.
 
 ## Emitted when a new character is created.
-signal character_created(token: int, type: CharacterType)
+signal character_created(token: int, type: CharacterDefinition)
 
 ## Emitted when a character changes its health.
 signal character_health_changed(token: int, health: int)
@@ -52,7 +52,7 @@ signal bullet_created(token: int, type: BulletType)
 signal entity_despawn(token: int)
 
 ## Emitted when an entity is respawned into the world from the despawn state.
-## The entity should become visible again and any ongoing destruction effect 
+## The entity should become visible again and any ongoing destruction effect
 ## should be removed (if there is an effect done for entity creation, such
 ## as following [signal bullet_created], it should not be created here).
 signal entity_respawn(token: int)
