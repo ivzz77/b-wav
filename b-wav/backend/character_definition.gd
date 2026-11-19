@@ -12,3 +12,9 @@ extends Resource
 
 # TODO: vfx should define variables needed here
 #@export var sprite: Texture2D
+
+var speed : int
+var focused_speed : int
+
+# hitbox
+var radius : int = 48
