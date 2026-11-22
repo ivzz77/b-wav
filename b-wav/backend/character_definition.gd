@@ -18,3 +18,13 @@ var focused_speed : int
 
 # hitbox
 var radius : int = 48
+
+@warning_ignore("shadowed_variable")
+func _init(name : String, speed : int, focused_speed : int, radius : int = 48):
+	self.name = name
+	self.speed = speed
+	self.focused_speed = focused_speed
+	self.radius = radius
+	
+	
+	

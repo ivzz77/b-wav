@@ -27,6 +27,7 @@ static var characters : Array[Character]
 static var phy : PhysicsEngine
 static var logic : GameLogic
 
+static var renderer : Renderer
 
 
 # @beam -> idk how u want these layers to interrelate ultimately
@@ -42,15 +43,20 @@ func _ready() -> void:
 		# surely 1024 is enough
 		bp._add32()
 		
-		
 		# why the hell is it called by .new() like that
 		for j in 32:
 			var b = Bullet.new() 
 			bp.bullets.push_back(b)
 			var c = Component.new
 			bp.components.push_back(c)
+	
+	#	spawn the 2 kat characters & push to list
+	const SPAWN_OFFSET : int = 100
+	characters.append( Character.new(%Kat.def, Vector2i(-SPAWN_OFFSET, 0) ))
+	characters.append( Character.new(%Kat.def, Vector2i(SPAWN_OFFSET, 0) ))
 
 
+@warning_ignore("unused_parameter")
 func _physics_process(delta : float) -> void:
 	logic.process()
 	phy.process()
@@ -59,3 +65,9 @@ func _physics_process(delta : float) -> void:
 	
 	
 	pass
+
+
+
+# per frame rendering
+func _process(delta: float) -> void:
+	renderer.process(delta)

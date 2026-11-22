@@ -1,3 +1,4 @@
+class_name Renderer
 extends Node
 
 
@@ -20,18 +21,15 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+# manually called by comms layer every frame
+func process(delta: float) -> void:
 	
-	# @beam
-	# tell me if this is how responsiblity is supposed to be handled
-	# like. please don't tell me we should somehow pass in a list of entities
-	# & sync it with every frame
-	for entity in C.bp:
-		render(entity, delta)
-		pass
+	for bullet in C.bp:
+		render(bullet, delta)
+	for character in C.characters:
+		render(character, delta)
+#		probably need specific logic tbh
 	
-	pass
 
 
 # probably want a view into the physics tick thing
@@ -45,6 +43,10 @@ func render(e : Entity, delta: float) -> void:
 	#	 & the character/bullet etc shared resource should contain a 
 	#	 actual canvasitem (sprite2d)? which we will fetch the
 	#	resource id (rid) from & call renderingserver stuff
+	
+	
+	#	TODO temporary thing for now
+	#	kazelink should figure all this out tbh
 	
 	
 	pass

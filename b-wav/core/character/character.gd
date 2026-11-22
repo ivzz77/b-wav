@@ -1,7 +1,7 @@
-@abstract class_name Character
+class_name Character
 extends Entity
 # should really be just an abstract representation of a character's data
-
+# and yet not @abstract bc it should actually exist in world & be instantiable
 
 var base : CharacterDefinition
 

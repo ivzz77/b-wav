@@ -13,27 +13,29 @@ extends PhysicsEngine
 
 
 
-func _ready() -> void:
-	pass
-
 # called every physics tick... by the comms layer!!
 # WILL MODIFY entity list STATE!!!
 func process() -> void:
 	
-	for entity in C.bp:
-		update(entity)
-	pass
-	
+	for bullet in C.bp:
+		update(bullet)
+	for character in C.characters:
+		update(character)
+			
 	# character collision check
-	for player in C.characters:
-		pass
+	for character in C.characters:
+		for bullet in C.bp:
+			if character.intersects(bullet):
+				pass
+#				TODO see what beam wants	
+
+	# maybe could do more fancy interval path collision check
+	#	but like whatever tbh
 
 
 func update(e : Entity) -> void:
-	e.x += e.velocity.x
-	e.y += e.velocity.y
+	e.pos += e.velocity
 	
-	pass
 
 
 # commuicate w/ beam i dont need a lot of this

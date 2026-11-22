@@ -1,4 +1,4 @@
-class_name Character
+#class_name Character
 extends RefCounted
 ## A generic character controller defined in a [GameLogic] script.
 ##
