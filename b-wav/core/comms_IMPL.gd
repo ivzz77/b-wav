@@ -50,9 +50,8 @@ func _ready() -> void:
 		for j in 32:
 			var b = Bullet.new() 
 			bp.bullets.push_back(b)
-			var c = Component.new
-			bp.components.push_back(c)
-	
+			
+			
 	#	spawn the 2 kat characters & push to list
 	const SPAWN_OFFSET : int = 100
 	characters.append( Character.new(%Kat.def, Vector2i(-SPAWN_OFFSET, 0) ))
