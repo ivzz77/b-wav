@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bb1lq61e221x" path="res://src/frontend/scripts/main_menu_manager.gd" id="1_rdnpq"]
 [ext_resource type="Script" uid="uid://bp145h76t83fg" path="res://src/frontend/scripts/settings.gd" id="1_yo5cw"]
 [ext_resource type="PackedScene" uid="uid://byt0ch1xgdxi1" path="res://src/frontend/scenes/credits_menu.tscn" id="2_5bje1"]
+[ext_resource type="AudioStream" uid="uid://4j48pyvntbxp" path="res://src/frontend/assets/ambi2.mp3" id="3_whhv8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0xig"]
 corner_radius_top_left = 5
@@ -169,19 +170,19 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EffectsVolume" type="HBoxContainer" parent="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer" unique_id=1306077856]
+[node name="SFXVolume" type="HBoxContainer" parent="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer" unique_id=1306077856]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/EffectsVolume" unique_id=2082989279]
+[node name="Label" type="Label" parent="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/SFXVolume" unique_id=2082989279]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-text = "Effects"
+text = "SFX"
 
-[node name="VSeparator" type="VSeparator" parent="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/EffectsVolume" unique_id=960648991]
+[node name="VSeparator" type="VSeparator" parent="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/SFXVolume" unique_id=960648991]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/EffectsVolume" unique_id=93661859]
+[node name="HSlider" type="HSlider" parent="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/SFXVolume" unique_id=93661859]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -396,9 +397,16 @@ layout_mode = 2
 metadata/_tab_index = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1011600522]
+stream = ExtResource("3_whhv8")
+autoplay = true
+bus = &"Music"
 
 [node name="CreditsMenu" parent="." unique_id=1135110636 instance=ExtResource("2_5bje1")]
 visible = false
 layout_mode = 1
 
-[connection signal="value_changed" from="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MasterVolume/HSlider" to="Settings" method="_on_volume_value_changed"]
+[connection signal="value_changed" from="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MasterVolume/HSlider" to="Settings" method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MusicVolume/HSlider" to="Settings" method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/SFXVolume/HSlider" to="Settings" method="_on_effects_volume_value_changed"]
+[connection signal="item_selected" from="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/WindowSelect/OptionButton" to="Settings" method="_on_window_button_item_selected"]
+[connection signal="item_selected" from="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/ResolutionSelect/OptionButton" to="Settings" method="_on_resolution_select"]
