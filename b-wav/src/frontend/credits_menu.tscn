@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://byt0ch1xgdxi1"]
 
+[ext_resource type="Script" uid="uid://drncid3crm6ky" path="res://src/frontend/credits_menu.gd" id="1_iu60e"]
+
 [node name="CreditsMenu" type="Control" unique_id=1135110636]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_iu60e")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=727881738]
 layout_mode = 1
@@ -16,9 +21,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -96.0
-offset_top = -214.0
+offset_top = -212.0
 offset_right = 96.0
-offset_bottom = 214.0
+offset_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -76,7 +81,7 @@ theme_override_font_sizes/font_size = 14
 text = "(Add Name)"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1479910552]
+[node name="Divider" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1168240640]
 layout_mode = 2
 
 [node name="Art" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1666499526]

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://brp188w2g5ata"]
 
-[ext_resource type="Script" uid="uid://bp145h76t83fg" path="res://frontend/settings.gd" id="1_yo5cw"]
+[ext_resource type="Script" uid="uid://bb1lq61e221x" path="res://src/frontend/main_menu_manager.gd" id="1_rdnpq"]
+[ext_resource type="Script" uid="uid://bp145h76t83fg" path="res://src/frontend/settings.gd" id="1_yo5cw"]
+[ext_resource type="PackedScene" uid="uid://byt0ch1xgdxi1" path="res://src/frontend/credits_menu.tscn" id="2_5bje1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0xig"]
 corner_radius_top_left = 5
@@ -12,16 +14,16 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_py7os"]
 
-[node name="MainMenuMockup" type="Control" unique_id=875885582]
+[node name="MainMenuManager" type="Control" unique_id=875885582]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rdnpq")
 
 [node name="Main" type="Control" parent="." unique_id=1215098983]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -105,10 +107,9 @@ theme_override_constants/margin_bottom = 9
 
 [node name="TabContainer" type="TabContainer" parent="Settings/PanelContainer/MarginContainer" unique_id=1408142272]
 layout_mode = 2
-current_tab = 1
+current_tab = 0
 
 [node name="Game Settings" type="MarginContainer" parent="Settings/PanelContainer/MarginContainer/TabContainer" unique_id=1522833914]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
@@ -263,6 +264,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Controls" type="MarginContainer" parent="Settings/PanelContainer/MarginContainer/TabContainer" unique_id=421142393]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -392,5 +394,9 @@ text = "Input"
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="CreditsMenu" parent="." unique_id=1135110636 instance=ExtResource("2_5bje1")]
+visible = false
+layout_mode = 1
 
 [connection signal="value_changed" from="Settings/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MasterVolume/HSlider" to="Settings" method="_on_volume_value_changed"]
