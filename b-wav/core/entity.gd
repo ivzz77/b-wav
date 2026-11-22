@@ -20,9 +20,11 @@ var token : int
 
 
 
-var x : int
-var y : int
-var velocity : int2
+#var x : int
+#var y : int
+
+var pos : Vector2i
+var velocity : Vector2i
 
 # can be null, be prepared to handle it when rendering
 var sprite = null
@@ -42,12 +44,7 @@ var radius : int = 0
 
 # TODO test this actually works lmao
 func intersects(other : Entity) -> bool:
-	var dx = other.x - x
-	var dy = other.y - y
-	var dist = intsqrt(dx*dx + dy*dy)
-	# might be potentially problematic from overflow
-	# but probably not for the scale we're working with
-	
+	var dist = intlength(other.pos - pos)	
 	return dist < radius + other.radius
 
 
@@ -55,14 +52,14 @@ func intersects(other : Entity) -> bool:
 # like copy constructor but doesn't actually create new instance
 # BE VERY CAREFUL ACTUALLY COPY EVERY FIELD
 func _copy(e : Entity) -> void:
-	x = e.x
-	y = e.y
-	velocity.x = e.velocity.x
-	velocity.y = e.velocity.y
-	
-	radius = e.radius
-	
+	#	TODO
+	pass
 
+
+# might be potentially problematic from overflow
+# but probably not for the scale we're working with
+func intlength(v : Vector2i) -> int:
+	return intsqrt(v.x*v.x + v.y*v.y)
 
 
 

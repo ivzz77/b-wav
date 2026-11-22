@@ -13,6 +13,10 @@ extends Entity
 # tbh like. may as well just access these fields directly
 var active : bool = false
 
+# hm... not sure if should be entire character reference
+# who the bullet belongs to
+var owner : int
+
 
 
 
@@ -25,9 +29,8 @@ var power_level : int = -1
 
 
 # sets all of own value according to b
-
-# i swear
-# its not like i'm trying to overload ts
+	# i swear
+	# its not like i'm trying to overload ts
 func _copy_b(b : Bullet) -> void:
 	#active should be manually set by some other thing ig
 	# an active bullet should imply physics is acting upon it

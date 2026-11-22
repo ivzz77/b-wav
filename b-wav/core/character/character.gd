@@ -40,10 +40,9 @@ var hearts_left : int
 
 
 @warning_ignore("shadowed_variable_base_class")
-func _init(c : CharacterDefinition, x : int, y : int):
-	base = c
-	self.x = x
-	self.y = y
+func _init(chr : CharacterDefinition, pos : Vector2i):
+	base = chr
+	self.pos = pos
 	reset()
 	
 	direction = intdir.new(0)
