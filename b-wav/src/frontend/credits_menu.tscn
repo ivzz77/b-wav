@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://byt0ch1xgdxi1"]
+
+[node name="CreditsMenu" type="Control" unique_id=1135110636]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=727881738]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -214.0
+offset_right = 96.0
+offset_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=487036099]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1147838802]
+layout_mode = 2
+
+[node name="Credits" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2111767601]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="Programmers" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1199561976]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Programmers"
+horizontal_alignment = 1
+
+[node name="Name1" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1303981878]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "(Add Name)"
+horizontal_alignment = 1
+
+[node name="Name2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=177235441]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "(Add Name)"
+horizontal_alignment = 1
+
+[node name="Name3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=991796778]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "(Add Name)"
+horizontal_alignment = 1
+
+[node name="Name4" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1913508645]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "(Add Name)"
+horizontal_alignment = 1
+
+[node name="Name5" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=727710408]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Nathalia Magdaleno"
+horizontal_alignment = 1
+
+[node name="Name6" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=71730108]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "(Add Name)"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1479910552]
+layout_mode = 2
+
+[node name="Art" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1666499526]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Art"
+horizontal_alignment = 1
+
+[node name="Name7" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=138182599]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "(Add Name)"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=484651806]
+layout_mode = 2
+
+[node name="Music" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=724538153]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Music & Sound Design"
+horizontal_alignment = 1
+
+[node name="Jimmy\'s Songs" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=245960239]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "(Add Song Names)"
+horizontal_alignment = 1
+
+[node name="Name8" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=894023091]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Jimmy [Last Name]"
+horizontal_alignment = 1
+
+[node name="Nathalia\'s Songs" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1794724555]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "(Add Song Names)"
+horizontal_alignment = 1
+
+[node name="Name9" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1887652433]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Nathalia Magdaleno"
+horizontal_alignment = 1
+
+[node name="XNORCredits" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1025548474]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "(XNOR XNOR XNOR Credits)"
+horizontal_alignment = 1
+
+[node name="VScrollBar" type="VScrollBar" parent="PanelContainer/MarginContainer" unique_id=1141898071]
+layout_mode = 2
+rounded = true
