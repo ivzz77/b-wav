@@ -17,14 +17,14 @@ extends PhysicsEngine
 # WILL MODIFY entity list STATE!!!
 func process() -> void:
 	
-	for bullet in C.bp:
+	for bullet in C.bp.bullets:
 		update(bullet)
 	for character in C.characters:
 		update(character)
 			
 	# character collision check
 	for character in C.characters:
-		for bullet in C.bp:
+		for bullet in C.bp.bullets:
 			if character.intersects(bullet):
 				pass
 #				TODO see what beam wants	

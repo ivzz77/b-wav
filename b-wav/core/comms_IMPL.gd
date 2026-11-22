@@ -37,8 +37,11 @@ func _ready() -> void:
 	phy = Singleton.PHYSICS
 	logic = Singleton.GAME_LOGIC
 	
+	renderer = Singleton.RENDERER
+	
 	
 	# do initialization of bullet pool (NOT made of nodes)
+	bp = BulletPool.new()
 	for i in 32:
 		# surely 1024 is enough
 		bp._add32()

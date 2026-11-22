@@ -21,8 +21,9 @@ var claw : PowerBulletType
 func _ready() -> void:
 	
 	#	subject to change!!!
-	def.new("kat", 48, 24)
+	def = CharacterDefinition.new("kat", 48, 24)
 	
+	claw = PowerBulletType.new()
 	claw.populate(
 		# attack parameters go here
 		# keep in mind player hitbox is around 48px

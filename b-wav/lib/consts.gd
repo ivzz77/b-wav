@@ -19,13 +19,12 @@ extends Node
 # thus, this is my solution for a problem that shouldn't exist
 
 
-static var ZERO2 : int2
-static var DIR_RIGHT : intdir
-static var PROP_ONE : intprop
+static var DIR_RIGHT : intdir = intdir.new(0)
+static var PROP_ONE : intprop = intprop.new(intprop.PROP_SUBDIVISION)
 
 static var EMPTY_B : Bullet = Bullet.new()
-static var EMPTY_B_TYPE : BulletType
-static var MOUSE_MOTION : InputEventMouseMotion
+static var EMPTY_B_TYPE : BulletType = BulletType.new(0,0,null)
+static var MOUSE_MOTION : InputEventMouseMotion = InputEventMouseMotion.new()
 
 # as far as i know, autoloading happens before anything else
 # so these values *should* be set correctly when used
@@ -36,17 +35,5 @@ static var MOUSE_MOTION : InputEventMouseMotion
 
 
 func _ready() -> void:
-	ZERO2.x = 0
-	ZERO2.y = 0
-	
-	DIR_RIGHT.arg = 0
-	
-	EMPTY_B_TYPE.radius = 0
-	EMPTY_B_TYPE.speed = 0
-	EMPTY_B_TYPE.sprite = null
-	# for our purposes right now we don't want this to ever happen
-	# should assert sprite !null	
-	
-	PROP_ONE = intprop.new(intprop.PROP_SUBDIVISION)
-	
-	MOUSE_MOTION = InputEventMouseMotion.new()
+	# oh static vars can be initialized w/ expressions
+	pass

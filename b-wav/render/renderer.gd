@@ -24,7 +24,7 @@ func _ready() -> void:
 # manually called by comms layer every frame
 func process(delta: float) -> void:
 	
-	for bullet in C.bp:
+	for bullet in C.bp.bullets:
 		render(bullet, delta)
 	for character in C.characters:
 		render(character, delta)
@@ -47,6 +47,12 @@ func render(e : Entity, delta: float) -> void:
 	
 	#	TODO temporary thing for now
 	#	kazelink should figure all this out tbh
+#	ideally use multimesh2d & do all that transforms & stuff
+
+	# but for now use duplicated sprite nodes
+	# which admittedly isn't too bad? w/ packed scenes
+	
+	
 	
 	
 	pass
