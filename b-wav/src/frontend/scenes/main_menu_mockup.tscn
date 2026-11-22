@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://brp188w2g5ata"]
 
-[ext_resource type="Script" uid="uid://bb1lq61e221x" path="res://src/frontend/main_menu_manager.gd" id="1_rdnpq"]
-[ext_resource type="Script" uid="uid://bp145h76t83fg" path="res://src/frontend/settings.gd" id="1_yo5cw"]
-[ext_resource type="PackedScene" uid="uid://byt0ch1xgdxi1" path="res://src/frontend/credits_menu.tscn" id="2_5bje1"]
+[ext_resource type="Script" uid="uid://bb1lq61e221x" path="res://src/frontend/scripts/main_menu_manager.gd" id="1_rdnpq"]
+[ext_resource type="Script" uid="uid://bp145h76t83fg" path="res://src/frontend/scripts/settings.gd" id="1_yo5cw"]
+[ext_resource type="PackedScene" uid="uid://byt0ch1xgdxi1" path="res://src/frontend/scenes/credits_menu.tscn" id="2_5bje1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0xig"]
 corner_radius_top_left = 5
@@ -394,6 +394,8 @@ text = "Input"
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1011600522]
 
 [node name="CreditsMenu" parent="." unique_id=1135110636 instance=ExtResource("2_5bje1")]
 visible = false

@@ -2,13 +2,13 @@ extends Control
 
 @onready var MainMenu:Control = $Main
 @onready var SettingsMenu:Control = $Settings
-@onready var CreditsMenu:Control = $ControlMenu
+#@onready var CreditsMenu:Control = $ControlMenu (currently crashes)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	MainMenu.visible = true
 	SettingsMenu.visible = false
-	CreditsMenu.visible = false
+	#CreditsMenu.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
