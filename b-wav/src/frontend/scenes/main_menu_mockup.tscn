@@ -27,6 +27,7 @@ grow_vertical = 2
 script = ExtResource("1_rdnpq")
 
 [node name="Main" type="Control" parent="." unique_id=1215098983]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,10 +43,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -360.0
-offset_right = -360.0
-offset_bottom = -96.0
+offset_left = -140.0
+offset_top = -132.0
+offset_right = 140.0
+offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r0xig")
@@ -88,9 +89,18 @@ grow_vertical = 2
 script = ExtResource("1_yo5cw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings" unique_id=1399144952]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.5
+offset_top = -217.0
+offset_right = 282.5
+offset_bottom = 217.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Settings/VBoxContainer" unique_id=1715081162]
 custom_minimum_size = Vector2(565, 300)
