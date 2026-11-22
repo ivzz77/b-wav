@@ -1,12 +1,13 @@
 extends Control
 
-@onready var master_vol_slider: HSlider = $"PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MasterVolume/HSlider"
-@onready var music_vol_slider: HSlider = $"PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MusicVolume/HSlider"
-@onready var sfx_vol_slider: HSlider = $"PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/SFXVolume/HSlider"
+@onready var master_vol_slider: HSlider = $"VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MasterVolume/HSlider"
+@onready var music_vol_slider: HSlider = $"VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MusicVolume/HSlider"
+@onready var sfx_vol_slider: HSlider = $"VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/SFXVolume/HSlider"
 
 func _ready() -> void:
 	master_vol_slider.value = 100.0
 
+# Game Settings Controllers
 func _on_master_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(0, linear_to_db(value/100))
 	
@@ -34,4 +35,6 @@ func _on_window_button_item_selected(index: int) -> void:
 		2:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
-# Add vsync later
+# Add func vsync later
+
+# Keybindings Controller
