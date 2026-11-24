@@ -25,6 +25,7 @@ func _ready() -> void:
 	#If want to do transitions, can just make the transition animation it's own menu
 	#which plays animation on switch_to(), and then have it switch to the next Menu after that animation
 
+#Comment to test commits
 
 func _next_menu_pressed(next_menu:Menu) -> void:
 	currentMenu._switched_from()
