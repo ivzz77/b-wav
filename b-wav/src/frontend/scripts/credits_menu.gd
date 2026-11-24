@@ -1,8 +1,9 @@
-extends Control
+extends Menu
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	previous_menu = $"../Main"
 	visible = false
 
 
@@ -11,13 +12,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _switched_to() -> void:
-	visible = true
-	
-	#Set credit's menu track on
-	
-func _switched_from() -> void:
-	visible = false
+
 
 
 #DO NOT USE _input() to handle inputs, will still accept them when invisible

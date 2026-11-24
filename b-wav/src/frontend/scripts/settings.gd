@@ -1,10 +1,12 @@
-extends Control
+extends Menu
 
 @onready var master_vol_slider: HSlider = $"VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MasterVolume/HSlider"
 @onready var music_vol_slider: HSlider = $"VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MusicVolume/HSlider"
 @onready var sfx_vol_slider: HSlider = $"VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/SFXVolume/HSlider"
+@onready var back_button: Button = $VBoxContainer/PanelContainer2/MarginContainer/BackButton
 
 func _ready() -> void:
+	previous_menu = $"../Main"
 	master_vol_slider.value = 100.0
 
 # Game Settings Controllers
@@ -38,3 +40,7 @@ func _on_window_button_item_selected(index: int) -> void:
 # Add func vsync later
 
 # Keybindings Controller
+
+
+func _on_back_button_pressed() -> void:
+	Signals.menu_transition.emit(previous_menu)

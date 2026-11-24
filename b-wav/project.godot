@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://cxrbr4mah2aws"
 [autoload]
 
 Token="*uid://rhjfwpcpw3f1"
+Signals="*uid://075xfw5hjkhg"
 
 [display]
 

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bb1lq61e221x" path="res://src/frontend/scripts/main_menu_manager.gd" id="1_rdnpq"]
 [ext_resource type="Script" uid="uid://bp145h76t83fg" path="res://src/frontend/scripts/settings.gd" id="1_yo5cw"]
 [ext_resource type="PackedScene" uid="uid://byt0ch1xgdxi1" path="res://src/frontend/scenes/credits_menu.tscn" id="2_5bje1"]
+[ext_resource type="Script" uid="uid://dyspgvr1fko0n" path="res://src/frontend/scenes/main_menu.gd" id="2_s72cn"]
 [ext_resource type="AudioStream" uid="uid://4j48pyvntbxp" path="res://src/frontend/assets/ambi2.mp3" id="3_whhv8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0xig"]
@@ -27,13 +28,13 @@ grow_vertical = 2
 script = ExtResource("1_rdnpq")
 
 [node name="Main" type="Control" parent="." unique_id=1215098983]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_s72cn")
 
 [node name="PanelContainer" type="PanelContainer" parent="Main" unique_id=110855023]
 custom_minimum_size = Vector2(280, 264)
@@ -80,6 +81,7 @@ layout_mode = 2
 text = "Quit"
 
 [node name="Settings" type="Control" parent="." unique_id=765771766]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -406,7 +408,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Button" type="Button" parent="Settings/VBoxContainer/PanelContainer2/MarginContainer" unique_id=1403499348]
+[node name="BackButton" type="Button" parent="Settings/VBoxContainer/PanelContainer2/MarginContainer" unique_id=1403499348]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "BACK"
@@ -420,8 +422,13 @@ bus = &"Music"
 visible = false
 layout_mode = 1
 
+[connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Play" to="Main" method="_on_play_pressed"]
+[connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Options" to="Main" method="_on_options_pressed"]
+[connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Quit" to="Main" method="_on_quit_pressed"]
 [connection signal="value_changed" from="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MasterVolume/HSlider" to="Settings" method="_on_master_volume_value_changed"]
 [connection signal="value_changed" from="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MusicVolume/HSlider" to="Settings" method="_on_music_volume_value_changed"]
 [connection signal="value_changed" from="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/SFXVolume/HSlider" to="Settings" method="_on_effects_volume_value_changed"]
 [connection signal="item_selected" from="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/WindowSelect/OptionButton" to="Settings" method="_on_window_button_item_selected"]
 [connection signal="item_selected" from="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/ResolutionSelect/OptionButton" to="Settings" method="_on_resolution_select"]
+[connection signal="pressed" from="Settings/VBoxContainer/PanelContainer2/MarginContainer/BackButton" to="Settings" method="_on_back_button_pressed"]
