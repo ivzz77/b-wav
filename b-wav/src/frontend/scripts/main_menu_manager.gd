@@ -3,6 +3,7 @@ extends Control
 @onready var main_menu:Control = $Main
 @onready var settings_menu:Control = $Settings
 @onready var credits_menu:Control = $CreditsMenu
+@onready var play_menu: Menu = $PlayMenu
 
 var currentMenu:Menu
 
@@ -12,6 +13,7 @@ func _ready() -> void:
 	currentMenu = main_menu
 	settings_menu.visible = false
 	credits_menu.visible = false
+	play_menu.visible = false
 	
 	#Attach signals
 	Signals.menu_transition.connect(_next_menu_pressed)
@@ -25,7 +27,6 @@ func _ready() -> void:
 	#If want to do transitions, can just make the transition animation it's own menu
 	#which plays animation on switch_to(), and then have it switch to the next Menu after that animation
 
-#Comment to test commits
 
 func _next_menu_pressed(next_menu:Menu) -> void:
 	currentMenu._switched_from()

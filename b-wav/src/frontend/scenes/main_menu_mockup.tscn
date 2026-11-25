@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://byt0ch1xgdxi1" path="res://src/frontend/scenes/credits_menu.tscn" id="2_5bje1"]
 [ext_resource type="Script" uid="uid://dyspgvr1fko0n" path="res://src/frontend/scenes/main_menu.gd" id="2_s72cn"]
 [ext_resource type="AudioStream" uid="uid://4j48pyvntbxp" path="res://src/frontend/assets/ambi2.mp3" id="3_whhv8"]
+[ext_resource type="PackedScene" uid="uid://d0kk46fy36bdv" path="res://src/frontend/scenes/play_menu.tscn" id="6_s3waj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0xig"]
 corner_radius_top_left = 5
@@ -75,6 +76,10 @@ text = "Play"
 [node name="Options" type="Button" parent="Main/PanelContainer/MarginContainer/VBoxContainer" unique_id=1479673507]
 layout_mode = 2
 text = "Settings"
+
+[node name="Credits" type="Button" parent="Main/PanelContainer/MarginContainer/VBoxContainer" unique_id=1628129704]
+layout_mode = 2
+text = "Credits"
 
 [node name="Quit" type="Button" parent="Main/PanelContainer/MarginContainer/VBoxContainer" unique_id=960505033]
 layout_mode = 2
@@ -422,8 +427,13 @@ bus = &"Music"
 visible = false
 layout_mode = 1
 
+[node name="PlayMenu" parent="." unique_id=1994176475 instance=ExtResource("6_s3waj")]
+layout_mode = 1
+
 [connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Play" to="Main" method="_on_play_pressed"]
 [connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Options" to="Main" method="_on_options_pressed"]
+[connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Credits" to="Main" method="_on_credits_pressed"]
 [connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Quit" to="Main" method="_on_quit_pressed"]
 [connection signal="value_changed" from="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MasterVolume/HSlider" to="Settings" method="_on_master_volume_value_changed"]

@@ -4,137 +4,166 @@
 
 [node name="CreditsMenu" type="Control" unique_id=1135110636]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_left = 0.4234375
+anchor_top = 0.18263888
+anchor_right = 0.5765625
+anchor_bottom = 0.85694444
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_iu60e")
+metadata/_edit_use_anchors_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=727881738]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1610537341]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = -212.0
-offset_right = 96.0
-offset_bottom = 212.0
+offset_left = -250.0
+offset_top = -179.625
+offset_right = 250.0
+offset_bottom = 179.625
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=487036099]
+[node name="CreditsArea" type="PanelContainer" parent="VBoxContainer" unique_id=727881738]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1147838802]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CreditsArea" unique_id=230023072]
 layout_mode = 2
 
-[node name="Credits" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2111767601]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CreditsArea/ScrollContainer" unique_id=487036099]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer" unique_id=1147838802]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+
+[node name="Credits" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=2111767601]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Credits"
 horizontal_alignment = 1
 
-[node name="Programmers" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1199561976]
+[node name="Programmers" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1199561976]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Programmers"
 horizontal_alignment = 1
 
-[node name="Name1" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1303981878]
+[node name="Name1" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1303981878]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "(Add Name)"
 horizontal_alignment = 1
 
-[node name="Name2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=177235441]
+[node name="Name2" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=177235441]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "(Add Name)"
 horizontal_alignment = 1
 
-[node name="Name3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=991796778]
+[node name="Name3" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=991796778]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "(Add Name)"
 horizontal_alignment = 1
 
-[node name="Name4" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1913508645]
+[node name="Name4" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1913508645]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "(Add Name)"
 horizontal_alignment = 1
 
-[node name="Name5" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=727710408]
+[node name="Name5" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=727710408]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Nathalia Magdaleno"
 horizontal_alignment = 1
 
-[node name="Name6" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=71730108]
+[node name="Name6" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=71730108]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "(Add Name)"
 horizontal_alignment = 1
 
-[node name="Divider" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1168240640]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1286839436]
 layout_mode = 2
 
-[node name="Art" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1666499526]
+[node name="Art" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1666499526]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Art"
 horizontal_alignment = 1
 
-[node name="Name7" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=138182599]
+[node name="Name7" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=138182599]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "(Add Name)"
 horizontal_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=484651806]
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=484651806]
 layout_mode = 2
 
-[node name="Music" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=724538153]
+[node name="Music" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=724538153]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Music & Sound Design"
 horizontal_alignment = 1
 
-[node name="Jimmy\'s Songs" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=245960239]
+[node name="Jimmy\'s Songs" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=245960239]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "(Add Song Names)"
 horizontal_alignment = 1
 
-[node name="Name8" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=894023091]
+[node name="Name8" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=894023091]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Jimmy [Last Name]"
 horizontal_alignment = 1
 
-[node name="Nathalia\'s Songs" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1794724555]
+[node name="Nathalia\'s Songs" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1794724555]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "(Add Song Names)"
 horizontal_alignment = 1
 
-[node name="Name9" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1887652433]
+[node name="Name9" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1887652433]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Nathalia Magdaleno"
 horizontal_alignment = 1
 
-[node name="XNORCredits" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1025548474]
+[node name="XNORCredits" type="Label" parent="VBoxContainer/CreditsArea/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1025548474]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "(XNOR XNOR XNOR Credits)"
 horizontal_alignment = 1
 
-[node name="VScrollBar" type="VScrollBar" parent="PanelContainer/MarginContainer" unique_id=1141898071]
+[node name="BackButtonArea" type="PanelContainer" parent="VBoxContainer" unique_id=2141191560]
 layout_mode = 2
-rounded = true
+
+[node name="BackButtonMargin" type="MarginContainer" parent="VBoxContainer/BackButtonArea" unique_id=1038962858]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BackButton" type="Button" parent="VBoxContainer/BackButtonArea/BackButtonMargin" unique_id=1413159508]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BACK"
+
+[connection signal="pressed" from="VBoxContainer/BackButtonArea/BackButtonMargin/BackButton" to="." method="_on_back_button_pressed"]
