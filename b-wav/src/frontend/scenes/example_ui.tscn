@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://6f0g4k2iqwhf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4lcl"]
+bg_color = Color(0.218061, 0.21806106, 0.21806088, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.37716255, 0.3771626, 0.37716243, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1jsv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_py7os"]
+font_size = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_py7os"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uchyk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fbet"]
+bg_color = Color(0.21173969, 0.53661126, 0.95283276, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_py7os"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.42595553, 0.42595556, 0.42595538, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+anti_aliasing = false
+
+[node name="ExampleUI" type="Control" unique_id=1981275493]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=354611372]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.218061, 0.21806106, 0.21806088, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=808215716]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -82.0
+offset_right = 159.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p4lcl")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=2080144290]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1055261073]
+layout_mode = 2
+
+[node name="TitleBox" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=84629845]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/TitleBox" unique_id=593269510]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "B/Wav Player Polls"
+
+[node name="Subtitles" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/TitleBox" unique_id=1645690604]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.5899028, 0.5899029, 0.5899029, 1)
+theme_override_font_sizes/font_size = 7
+text = "Subtitle text"
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1708894398]
+layout_mode = 2
+theme_override_constants/separation = 12
+theme_override_styles/separator = SubResource("StyleBoxEmpty_t1jsv")
+
+[node name="MetricBox" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=77659135]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Metric Box" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MetricBox" unique_id=1120790915]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MetricBox/Metric Box" unique_id=127699444]
+layout_mode = 2
+text = "Metric 1"
+label_settings = SubResource("LabelSettings_py7os")
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/MetricBox/Metric Box" unique_id=5781074]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.9
+theme_override_styles/separator = SubResource("StyleBoxEmpty_py7os")
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer/MetricBox/Metric Box" unique_id=1631308560]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxEmpty_uchyk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0fbet")
+value = 98.3
+fill_mode = 1
+show_percentage = false
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MetricBox/Metric Box" unique_id=1813054102]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "98.3%"
+label_settings = SubResource("LabelSettings_py7os")
+horizontal_alignment = 2
+
+[node name="Metric Box2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MetricBox" unique_id=1521346225]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MetricBox/Metric Box2" unique_id=293082062]
+layout_mode = 2
+text = "Metric 2"
+label_settings = SubResource("LabelSettings_py7os")
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/MetricBox/Metric Box2" unique_id=620241519]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.9
+theme_override_styles/separator = SubResource("StyleBoxEmpty_py7os")
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer/MetricBox/Metric Box2" unique_id=1374200753]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxEmpty_uchyk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0fbet")
+value = 3.3
+fill_mode = 1
+show_percentage = false
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MetricBox/Metric Box2" unique_id=410365152]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "3.3%"
+label_settings = SubResource("LabelSettings_py7os")
+horizontal_alignment = 2
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1841301981]
+layout_mode = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_t1jsv")
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2115875683]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_py7os")
+text = "See more"
