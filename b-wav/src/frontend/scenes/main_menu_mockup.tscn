@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://dyspgvr1fko0n" path="res://src/frontend/scenes/main_menu.gd" id="2_s72cn"]
 [ext_resource type="AudioStream" uid="uid://4j48pyvntbxp" path="res://src/frontend/assets/ambi2.mp3" id="3_whhv8"]
 [ext_resource type="PackedScene" uid="uid://d0kk46fy36bdv" path="res://src/frontend/scenes/play_menu.tscn" id="6_s3waj"]
+[ext_resource type="PackedScene" uid="uid://b638db5ceur4j" path="res://src/frontend/scenes/character_select_menu.tscn" id="7_coe1k"]
+[ext_resource type="PackedScene" uid="uid://clj77gw5bd0ff" path="res://src/frontend/scenes/stats_menu.tscn" id="8_f7c32"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0xig"]
 corner_radius_top_left = 5
@@ -430,6 +432,12 @@ layout_mode = 1
 [node name="PlayMenu" parent="." unique_id=1994176475 instance=ExtResource("6_s3waj")]
 visible = false
 layout_mode = 1
+
+[node name="CharacterSelectMenu" parent="." unique_id=900492717 instance=ExtResource("7_coe1k")]
+layout_mode = 1
+
+[node name="StatsMenu" parent="." unique_id=682444827 instance=ExtResource("8_f7c32")]
+layout_mode = 0
 
 [connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Play" to="Main" method="_on_play_pressed"]
 [connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Options" to="Main" method="_on_options_pressed"]

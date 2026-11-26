@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://banuurpw6j6j4" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="Script" uid="uid://cq4wjng4v554p" path="res://core/comms_IMPL.gd" id="2_7mycd"]
 [ext_resource type="Script" uid="uid://rhjfwpcpw3f1" path="res://backend/internal/token_service.gd" id="3_272bh"]
+[ext_resource type="PackedScene" uid="uid://brp188w2g5ata" path="res://src/frontend/scenes/main_menu_mockup.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bq8dekq5xqg0i" path="res://character/kat/kat.tscn" id="6_7mycd"]
 
 [node name="Game" type="Node" unique_id=2068392402]
@@ -17,3 +18,5 @@ script = ExtResource("3_272bh")
 [node name="Kat" parent="communication layer" unique_id=1619230246 node_paths=PackedStringArray("claw_spr") instance=ExtResource("6_7mycd")]
 unique_name_in_owner = true
 claw_spr = [null, NodePath("claw/claw1"), NodePath("claw/claw2"), NodePath("claw/claw3"), null, null]
+
+[node name="MainMenuManager" parent="." unique_id=875885582 instance=ExtResource("5_lquwl")]

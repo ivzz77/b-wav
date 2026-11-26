@@ -4,6 +4,8 @@ extends Control
 @onready var settings_menu:Control = $Settings
 @onready var credits_menu:Control = $CreditsMenu
 @onready var play_menu: Menu = $PlayMenu
+@onready var stats_menu: Menu = $StatsMenu
+
 
 var currentMenu:Menu
 
@@ -17,6 +19,9 @@ func _ready() -> void:
 	
 	#Attach signals
 	Signals.menu_transition.connect(_next_menu_pressed)
+	Signals.match_start.connect(_prepare_match)
+	Signals.match_end.connect(_end_of_match)
+		#Double check this one, might just receive control directly after something else gets signaled
 
 
 #func _back_button_pressed() -> void:
@@ -34,6 +39,19 @@ func _next_menu_pressed(next_menu:Menu) -> void:
 	currentMenu = next_menu
 	#In a sense back button is also just another form of "next menu", so can have back button do the same here too
 
+func _prepare_match() -> void:
+	currentMenu._switched_from()
+	#Turn off current menu's music
+	
+	#To prepare for next menu being the stats menu
+	currentMenu = stats_menu
+	
+	#Give control over to C layer (double check)
+
+	
+func _end_of_match() -> void:
+	currentMenu._switched_to()
+
 #When button of menu pressed, don't want it to directly trigger transition there, instead send signals to menu_manager to handle
 #Since MenuManager already knows which menu is the current one, just needs to know which menu to transition to
-#Button gives signal, which has to include which Menu to transition to (could make it a String, or have it hold a reference to the nextMenu itself to pass instead)
+#Button gives signal, which has to include which Menu to transition to

@@ -4,4 +4,5 @@ extends Node
 #Menu Signals
 signal menu_transition(next_menu:Menu)
 
-#Autoloaded
+signal match_start
+signal match_end

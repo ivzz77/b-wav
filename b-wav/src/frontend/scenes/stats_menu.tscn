@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://clj77gw5bd0ff"]
+
+[ext_resource type="Script" uid="uid://bjjq3npkyl6mu" path="res://src/frontend/scripts/menu_base.gd" id="1_2b051"]
+
+[node name="StatsMenu" type="Control" unique_id=682444827]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2b051")
+metadata/_custom_type_script = "uid://bjjq3npkyl6mu"
