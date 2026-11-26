@@ -428,6 +428,7 @@ visible = false
 layout_mode = 1
 
 [node name="PlayMenu" parent="." unique_id=1994176475 instance=ExtResource("6_s3waj")]
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Play" to="Main" method="_on_play_pressed"]
