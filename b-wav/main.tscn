@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c8wssbfw0yq8r"]
+
+[ext_resource type="Script" uid="uid://banuurpw6j6j4" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="Script" uid="uid://cq4wjng4v554p" path="res://core/comms_IMPL.gd" id="2_7mycd"]
+[ext_resource type="Script" uid="uid://rhjfwpcpw3f1" path="res://backend/internal/token_service.gd" id="3_272bh"]
+[ext_resource type="PackedScene" uid="uid://bq8dekq5xqg0i" path="res://character/kat/kat.tscn" id="6_7mycd"]
+
+[node name="Game" type="Node" unique_id=2068392402]
+script = ExtResource("1_lquwl")
+
+[node name="communication layer" type="Node" parent="." unique_id=478394094]
+script = ExtResource("2_7mycd")
+
+[node name="token service" type="Node" parent="communication layer" unique_id=640998558]
+script = ExtResource("3_272bh")
+
+[node name="Kat" parent="communication layer" unique_id=1619230246 node_paths=PackedStringArray("claw_spr") instance=ExtResource("6_7mycd")]
+unique_name_in_owner = true
+claw_spr = [null, NodePath("claw/claw1"), NodePath("claw/claw2"), NodePath("claw/claw3"), null, null]
