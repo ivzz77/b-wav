@@ -20,4 +20,7 @@ magical's rewrite of the month old vfx branch...
     * added query
 
 ## todos
-* implement the rest of the game logic + communication layer stuff, need to hook up the backend from merge-test though.
+* implement the rest of the game logic + communication layer stuff, need to hook up the backend from merge-test though.   
+
+https://github.com/user-attachments/assets/57448dd7-1bf4-4a2a-adda-fbdd340cb2ed
+
