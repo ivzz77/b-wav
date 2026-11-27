@@ -26,11 +26,12 @@ var token : int
 var pos : Vector2i
 var velocity : Vector2i
 
-# can be null, be prepared to handle it when rendering
-var sprite = null
-# erm actually we do NOT want each entity to have a sprite2D, which is a NODE
+#var sprite = null
+# we do NOT want each entity to have a sprite2D, which is a NODE
 # just point to a shared resource
-# wonder if such a shared resource may as well be a template definec by subclasses then
+# actually, rendering for  bullet should be instanced w/ multimesh,
+# character just use a sprite
+# so, define differently in subclass
 
 
 

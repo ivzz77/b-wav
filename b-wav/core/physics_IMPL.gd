@@ -18,14 +18,15 @@ extends PhysicsEngine
 func process() -> void:
 	
 	for bullet in C.bp.bullets:
-		update(bullet)
+		if bullet.active:
+			update(bullet)
 	for character in C.characters:
 		update(character)
 			
 	# character collision check
 	for character in C.characters:
 		for bullet in C.bp.bullets:
-			if character.intersects(bullet):
+			if bullet.active and character.intersects(bullet):
 				pass
 #				TODO see what beam wants	
 

@@ -24,6 +24,8 @@ static var bp : BulletPool
 # obj are passed by reference thankfully
 static var characters : Array[Character]
 
+
+
 static var phy : PhysicsEngine
 static var logic : GameLogic
 
@@ -45,17 +47,18 @@ func _ready() -> void:
 	for i in 32:
 		# surely 1024 is enough
 		bp._add32()
-		
-		# why the hell is it called by .new() like that
 		for j in 32:
+			# why the hell is it called by .new() like that
 			var b = Bullet.new() 
 			bp.bullets.push_back(b)
-			
-			
+
 	#	spawn the 2 kat characters & push to list
 	const SPAWN_OFFSET : int = 100
 	characters.append( Character.new(%Kat.def, Vector2i(-SPAWN_OFFSET, 0) ))
 	characters.append( Character.new(%Kat.def, Vector2i(SPAWN_OFFSET, 0) ))
+
+
+
 
 
 @warning_ignore("unused_parameter")

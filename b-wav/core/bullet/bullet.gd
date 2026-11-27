@@ -28,14 +28,25 @@ var owner : int
 var power_level : int = -1
 
 
+# fucking shit!!!
+# gdscript doesn't even allow global enums
+# use an int to represent specific texture
+# renderer should refer to Singleton BulletTextureRegistry to find associated
+# multimesh
+# doesn't matter to anything except renderer
+var sprite : int
+
+
+
 # sets all of own value according to b
 	# i swear
 	# its not like i'm trying to overload ts
-func _copy_b(b : Bullet) -> void:
+@warning_ignore("shadowed_variable")
+func copy_set(b : Bullet, owner : int) -> void:
 	#active should be manually set by some other thing ig
 	# an active bullet should imply physics is acting upon it
 	# shouldn't be passing around Bullets as values if they're active...
 	sprite = b.sprite
 	power_level = b.power_level
+	self.owner = owner
 	
-	_copy(b)

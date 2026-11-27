@@ -12,6 +12,9 @@ extends Node
 
 
 
+enum texture_registry {}
+
+
 @export var camera : Camera2D
 
 

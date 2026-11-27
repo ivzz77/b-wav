@@ -3,12 +3,18 @@ extends Entity
 # should really be just an abstract representation of a character's data
 # and yet not @abstract bc it should actually exist in world & be instantiable
 
+
+# this should be what differentiates individual character entities
+# the actual game character corresponding to such entity
+
+# this also includes the character sprite w/ animations & all
 var base : CharacterDefinition
 
 
 var direction : intdir
 
 var speed_mult : intprop
+
 
 # timer in ticks until wears off
 var speed_mult_timer : int
@@ -17,9 +23,13 @@ var move_lock : int		# equivalent of stun timer
 var atk_lock : int
 var inv_timer : int
 
-# maybe expose to game settings @ some point TODOn't
-const STUN_THRESHHOLD : int = 2
+var stun_decay_timer : int
 var stun_counter : int
+const STUN_DECAY_TIME : int = 100		# getting hit 2x in 1 second will stun
+const STUN_THRESHHOLD : int = 2
+# maybe expose to game settings @ some point TODOn't
+
+
 
 # not a comprehensive state list; just things that are binary
 # might make bit flags somehow
@@ -65,5 +75,6 @@ func reset_timers():
 	move_lock = 0
 	atk_lock = 0
 	inv_timer = 0
+	stun_decay_timer = 0
 	
 	
