@@ -20,3 +20,5 @@ func _ready() -> void:
 	InputMap.action_add_event("kinetic_atk", Const.MOUSE_MOTION)
 	# ensure physics ticks sync with real time
 	
+	#Want to pass over control to the Main Menu Manager (thinking similar to binding and unbinding controls)
+	#Later on will be passed back control by Menu Manager when match starts

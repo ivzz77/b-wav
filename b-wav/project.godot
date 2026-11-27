@@ -15,15 +15,22 @@ run/main_scene="uid://c8wssbfw0yq8r"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://cxrbr4mah2aws"
+
 [autoload]
 
 Token="*uid://rhjfwpcpw3f1"
 Consts="*uid://cskqrqriom5uy"
 Singletons="*uid://bxc0u8mxgkn01"
+Signals="*uid://075xfw5hjkhg"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [input]

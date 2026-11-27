@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://d0kk46fy36bdv"]
+
+[ext_resource type="Script" uid="uid://ui86jjoi7anr" path="res://src/frontend/scripts/play_menu.gd" id="1_5iv01"]
+
+[node name="PlayMenu" type="Control" unique_id=1994176475]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5iv01")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1981305008]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=488655340]
+layout_mode = 2
+text = "CHOOSE YOUR GAME MODE"
+horizontal_alignment = 1
+
+[node name="PlayArea" type="PanelContainer" parent="VBoxContainer" unique_id=1816697003]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/PlayArea" unique_id=1403372364]
+layout_mode = 2
+columns = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PlayArea/GridContainer" unique_id=772541010]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="LocalPlay" type="Button" parent="VBoxContainer/PlayArea/GridContainer/MarginContainer" unique_id=1203786209]
+layout_mode = 2
+text = "Local Play"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/PlayArea/GridContainer" unique_id=71570724]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="OnlineMultiplayer" type="Button" parent="VBoxContainer/PlayArea/GridContainer/MarginContainer2" unique_id=838304519]
+layout_mode = 2
+text = "Online Multiplayer"
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/PlayArea/GridContainer" unique_id=1042091794]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="Tutorial" type="Button" parent="VBoxContainer/PlayArea/GridContainer/MarginContainer3" unique_id=469335802]
+layout_mode = 2
+text = "Tutorial"
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/PlayArea/GridContainer" unique_id=370798115]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Server" type="Button" parent="VBoxContainer/PlayArea/GridContainer/MarginContainer4" unique_id=1405563376]
+layout_mode = 2
+text = "Server
+"
+
+[node name="BackButtonArea" type="PanelContainer" parent="VBoxContainer" unique_id=1291820414]
+layout_mode = 2
+
+[node name="BackButtonMargin" type="MarginContainer" parent="VBoxContainer/BackButtonArea" unique_id=1380238972]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BackButton" type="Button" parent="VBoxContainer/BackButtonArea/BackButtonMargin" unique_id=58058074]
+layout_mode = 2
+text = "BACK"
+
+[connection signal="pressed" from="VBoxContainer/PlayArea/GridContainer/MarginContainer/LocalPlay" to="." method="_on_local_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayArea/GridContainer/MarginContainer2/OnlineMultiplayer" to="." method="_on_online_multiplayer_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayArea/GridContainer/MarginContainer3/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayArea/GridContainer/MarginContainer4/Server" to="." method="_on_server_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackButtonArea/BackButtonMargin/BackButton" to="." method="_on_back_button_pressed"]

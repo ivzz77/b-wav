@@ -1,0 +1,453 @@
+[gd_scene format=3 uid="uid://brp188w2g5ata"]
+
+[ext_resource type="Script" uid="uid://bb1lq61e221x" path="res://src/frontend/scripts/main_menu_manager.gd" id="1_rdnpq"]
+[ext_resource type="Script" uid="uid://bp145h76t83fg" path="res://src/frontend/scripts/settings.gd" id="1_yo5cw"]
+[ext_resource type="PackedScene" uid="uid://byt0ch1xgdxi1" path="res://src/frontend/scenes/credits_menu.tscn" id="2_5bje1"]
+[ext_resource type="Script" uid="uid://dyspgvr1fko0n" path="res://src/frontend/scenes/main_menu.gd" id="2_s72cn"]
+[ext_resource type="AudioStream" uid="uid://4j48pyvntbxp" path="res://src/frontend/assets/ambi2.mp3" id="3_whhv8"]
+[ext_resource type="PackedScene" uid="uid://d0kk46fy36bdv" path="res://src/frontend/scenes/play_menu.tscn" id="6_s3waj"]
+[ext_resource type="PackedScene" uid="uid://b638db5ceur4j" path="res://src/frontend/scenes/character_select_menu.tscn" id="7_coe1k"]
+[ext_resource type="PackedScene" uid="uid://clj77gw5bd0ff" path="res://src/frontend/scenes/stats_menu.tscn" id="8_f7c32"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0xig"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yo5cw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_py7os"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1jsv"]
+
+[node name="MainMenuManager" type="Control" unique_id=875885582]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rdnpq")
+
+[node name="Main" type="Control" parent="." unique_id=1215098983]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_s72cn")
+
+[node name="PanelContainer" type="PanelContainer" parent="Main" unique_id=110855023]
+custom_minimum_size = Vector2(280, 264)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -132.0
+offset_right = 140.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r0xig")
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/PanelContainer" unique_id=880553524]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/PanelContainer/MarginContainer" unique_id=919985038]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/PanelContainer/MarginContainer/VBoxContainer" unique_id=1176034074]
+layout_mode = 2
+text = "Bullets / Soundwaves
+(Real texture would go here)"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="Main/PanelContainer/MarginContainer/VBoxContainer" unique_id=1216450271]
+layout_mode = 2
+text = "Play"
+
+[node name="Options" type="Button" parent="Main/PanelContainer/MarginContainer/VBoxContainer" unique_id=1479673507]
+layout_mode = 2
+text = "Settings"
+
+[node name="Credits" type="Button" parent="Main/PanelContainer/MarginContainer/VBoxContainer" unique_id=1628129704]
+layout_mode = 2
+text = "Credits"
+
+[node name="Quit" type="Button" parent="Main/PanelContainer/MarginContainer/VBoxContainer" unique_id=960505033]
+layout_mode = 2
+text = "Quit"
+
+[node name="Settings" type="Control" parent="." unique_id=765771766]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yo5cw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings" unique_id=1399144952]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.5
+offset_top = -217.0
+offset_right = 282.5
+offset_bottom = 217.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Settings/VBoxContainer" unique_id=1715081162]
+custom_minimum_size = Vector2(565, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r0xig")
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings/VBoxContainer/PanelContainer" unique_id=1416667028]
+layout_mode = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 9
+
+[node name="TabContainer" type="TabContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer" unique_id=1408142272]
+layout_mode = 2
+current_tab = 0
+
+[node name="Game Settings" type="MarginContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer" unique_id=1522833914]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings" unique_id=2101190818]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer" unique_id=85948457]
+layout_mode = 2
+text = "Sound"
+
+[node name="HSeparator" type="HSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer" unique_id=872662649]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MasterVolume" type="HBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer" unique_id=1701656501]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MasterVolume" unique_id=2076376663]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Master"
+
+[node name="VSeparator" type="VSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MasterVolume" unique_id=2031023230]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MasterVolume" unique_id=442182165]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MusicVolume" type="HBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer" unique_id=1240455218]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MusicVolume" unique_id=65902055]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="VSeparator" type="VSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MusicVolume" unique_id=1883842168]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MusicVolume" unique_id=1361449447]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SFXVolume" type="HBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer" unique_id=1306077856]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/SFXVolume" unique_id=2082989279]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "SFX"
+
+[node name="VSeparator" type="VSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/SFXVolume" unique_id=960648991]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/SFXVolume" unique_id=93661859]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator3" type="HSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer" unique_id=499383679]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yo5cw")
+
+[node name="Label2" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer" unique_id=139124507]
+layout_mode = 2
+text = "Video"
+
+[node name="HSeparator2" type="HSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer" unique_id=918438150]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="WindowSelect" type="HBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer" unique_id=148742893]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/WindowSelect" unique_id=1056706025]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Window Mode"
+
+[node name="VSeparator" type="VSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/WindowSelect" unique_id=355547839]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/WindowSelect" unique_id=1936256804]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+selected = 0
+item_count = 3
+popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Borderless Windowed"
+popup/item_1/id = 1
+popup/item_2/text = "Windowed"
+popup/item_2/id = 2
+
+[node name="ResolutionSelect" type="HBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer" unique_id=1883049481]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/ResolutionSelect" unique_id=348885154]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Resolution"
+
+[node name="VSeparator" type="VSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/ResolutionSelect" unique_id=768240014]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/ResolutionSelect" unique_id=1794204618]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+selected = 0
+item_count = 3
+popup/item_0/text = "1280 x 720"
+popup/item_0/id = 0
+popup/item_1/text = "1900 x 1600"
+popup/item_1/id = 1
+popup/item_2/text = "1920 x 1080"
+popup/item_2/id = 2
+
+[node name="VsyncToggle" type="HBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer" unique_id=582788673]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/VsyncToggle" unique_id=1756048061]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Vsync"
+
+[node name="VSeparator" type="VSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/VsyncToggle" unique_id=1427114961]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/VsyncToggle" unique_id=276856869]
+layout_mode = 2
+
+[node name="Controls" type="MarginContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer" unique_id=421142393]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls" unique_id=2065885743]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer" unique_id=940080870]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer" unique_id=773717442]
+layout_mode = 2
+
+[node name="Player1Binds" type="VBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer" unique_id=1602589592]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player1Binds" unique_id=1552259575]
+layout_mode = 2
+text = "Player 1"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player1Binds" unique_id=1391801655]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player1Binds/HBoxContainer" unique_id=1172296188]
+layout_mode = 2
+text = "Action Input"
+
+[node name="VSeparator" type="VSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player1Binds/HBoxContainer" unique_id=472692003]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player1Binds/HBoxContainer" unique_id=298760588]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+text = "Spacebar"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player1Binds" unique_id=820768556]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player1Binds/HBoxContainer2" unique_id=2088965129]
+layout_mode = 2
+text = "Action Input"
+
+[node name="VSeparator" type="VSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player1Binds/HBoxContainer2" unique_id=1134641345]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player1Binds/HBoxContainer2" unique_id=1319815253]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+text = "Spacebar"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player1Binds" unique_id=1616704246]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player1Binds/HBoxContainer3" unique_id=598504932]
+layout_mode = 2
+text = "Action Input"
+
+[node name="VSeparator" type="VSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player1Binds/HBoxContainer3" unique_id=1775131552]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player1Binds/HBoxContainer3" unique_id=1827010998]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+text = "Spacebar"
+
+[node name="VSeparator" type="VSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer" unique_id=1986429796]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_py7os")
+
+[node name="Player2Binds" type="VBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer" unique_id=789549368]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player2Binds" unique_id=446465576]
+layout_mode = 2
+text = "Player 2"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player2Binds" unique_id=1415719973]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player2Binds/HBoxContainer" unique_id=1751252894]
+layout_mode = 2
+text = "Action Input"
+
+[node name="VSeparator" type="VSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player2Binds/HBoxContainer" unique_id=2088469216]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player2Binds/HBoxContainer" unique_id=61821340]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+text = "Input"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player2Binds" unique_id=1090113010]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player2Binds/HBoxContainer2" unique_id=1028166971]
+layout_mode = 2
+text = "Action Input"
+
+[node name="VSeparator" type="VSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player2Binds/HBoxContainer2" unique_id=447574719]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player2Binds/HBoxContainer2" unique_id=21994742]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+text = "Input"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player2Binds" unique_id=648837987]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player2Binds/HBoxContainer3" unique_id=762322319]
+layout_mode = 2
+text = "Action Input"
+
+[node name="VSeparator" type="VSeparator" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player2Binds/HBoxContainer3" unique_id=387085848]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Controls/ScrollContainer/MarginContainer/HBoxContainer/Player2Binds/HBoxContainer3" unique_id=1880339607]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+text = "Input"
+
+[node name="Accessibilty" type="MarginContainer" parent="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer" unique_id=1662471162]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="Settings/VBoxContainer" unique_id=6544535]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t1jsv")
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings/VBoxContainer/PanelContainer2" unique_id=458254041]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BackButton" type="Button" parent="Settings/VBoxContainer/PanelContainer2/MarginContainer" unique_id=1403499348]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "BACK"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1011600522]
+stream = ExtResource("3_whhv8")
+autoplay = true
+bus = &"Music"
+
+[node name="CreditsMenu" parent="." unique_id=1135110636 instance=ExtResource("2_5bje1")]
+visible = false
+layout_mode = 1
+
+[node name="PlayMenu" parent="." unique_id=1994176475 instance=ExtResource("6_s3waj")]
+visible = false
+layout_mode = 1
+
+[node name="CharacterSelectMenu" parent="." unique_id=900492717 instance=ExtResource("7_coe1k")]
+layout_mode = 1
+
+[node name="StatsMenu" parent="." unique_id=682444827 instance=ExtResource("8_f7c32")]
+layout_mode = 0
+
+[connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Play" to="Main" method="_on_play_pressed"]
+[connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Options" to="Main" method="_on_options_pressed"]
+[connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Credits" to="Main" method="_on_credits_pressed"]
+[connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Main/PanelContainer/MarginContainer/VBoxContainer/Quit" to="Main" method="_on_quit_pressed"]
+[connection signal="value_changed" from="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MasterVolume/HSlider" to="Settings" method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/MusicVolume/HSlider" to="Settings" method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/SFXVolume/HSlider" to="Settings" method="_on_effects_volume_value_changed"]
+[connection signal="item_selected" from="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/WindowSelect/OptionButton" to="Settings" method="_on_window_button_item_selected"]
+[connection signal="item_selected" from="Settings/VBoxContainer/PanelContainer/MarginContainer/TabContainer/Game Settings/VBoxContainer/ResolutionSelect/OptionButton" to="Settings" method="_on_resolution_select"]
+[connection signal="pressed" from="Settings/VBoxContainer/PanelContainer2/MarginContainer/BackButton" to="Settings" method="_on_back_button_pressed"]
