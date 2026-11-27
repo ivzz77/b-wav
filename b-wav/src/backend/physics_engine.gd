@@ -1,0 +1,90 @@
+@warning_ignore_start("unused_signal")
+@abstract class_name PhysicsEngine
+extends RefCounted
+## Interface for the component which processes motion and collisions.
+##
+## The physics engine is responsible for all entity motion and collision
+## interactions. It also owns all data representing location and motion within
+## the world. To create entities, a [GameLogic] script should call the methods
+## available on this interface (with some exceptions). That script does not need
+## to store any position data, be tasked with moving each entity every tick, or
+## implement any collision code. Instead, the game logic script should expect to
+## receive relevant events to act upon, such as
+## [method GameLogic.character_collided_bullet].
+## [br][br]
+## Update order on every simulation step must be:[br]
+## Simulate next entity positions -> increment [param tick] -> emit signals
+
+## Emitted when a character collides with a bullet.
+signal character_collided_bullet(character_token: int, bullet_token: int)
+
+## Emitted when a character collides with another character. Unlike [method
+## GameLogic.character_collided_character], this is only emitted once.
+signal character_collided_character(character_token: int, other_character_token: int)
+
+## Emitted when an entity is removed from the world, and will no longer
+## participate in simulation steps. The next signal with this token will either
+## be [signal entity_respawned] or [signal entity_destroyed].
+signal entity_despawned(token: int)
+
+## Emitted when an entity is respawned into the world from the despawn state.
+## This signal will be emitted before any collision signals.
+signal entity_respawned(token: int)
+
+## Emitted when an entity is destroyed. Destruction is irreversable, and this
+## token will never be used again.
+signal entity_destroyed(token: int)
+
+## Emitted during [method simulate] immediately before characters are simulated.
+## Useful for changing character velocity at the last possible moment to
+## minimize input lag.
+signal pre_character_tick()
+
+## Emitted after a simulation step, following all other signals emitted during
+## this tick. This signal is always emitted after [member tick] changes.
+signal post_tick()
+
+
+## The current tick of the engine (the tick most recently simulated).
+var tick: int:
+	get = get_tick
+
+## Returns the current tick (the tick most recently simulated).
+@abstract func get_tick() -> int
+
+## Spawn a new character. Returns a Token representing that character. Parameter
+## [param position] is the starting location of the new character.
+@abstract func spawn_character(type: CharacterType, position: Transform2D) -> int
+
+## Spawns a new bullet. Returns a Token representing that bullet. Parameter
+## [param position] is the starting location of the new bullet.
+@abstract func spawn_bullet(type: BulletType, position: Transform2D) -> int
+
+## Despawn an entity. This entity will no longer simulate and may be destroyed
+## in the near future. Returns false if the entity was not
+## despawned (such as if it doesn't exist).
+@abstract func despawn_entity(token: int) -> bool
+
+## Simulate the next tick. Positions of all entities are updated first, then
+## signals are emitted. Signal [signal post_tick] is always emitted following
+## this method and any other signals.
+@abstract func simulate() -> void
+
+## Attempt to rollback to a previous tick. The next call to [method simulate]
+## will simulate step [code]past_tick+1[/code]. Returns false if that tick cannot
+## be recovered.
+@abstract func rollback(past_tick: int) -> bool
+
+## Get an entity's current location this tick. Will return the most recent
+## position of a despawned entity and nonsense data for a destroyed entity.
+@abstract func get_entity_position(token: int) -> Transform2D
+
+## Get an entity's predicted position in the next tick. [color=gold]Warning:
+## this method is speculative. An entity may be despawned before the next tick,
+## or may move differently than predicted. Use only for visual smoothing
+## (lerping).[/color]
+@abstract func get_entity_future_position(token: int) -> Transform2D
+
+## Change a character's current velocity. Must be set to create character motion
+## as characters do not move on their own.
+@abstract func set_character_velocity(character_token: int, velocity: Vector2) -> void
