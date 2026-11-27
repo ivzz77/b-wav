@@ -11,7 +11,7 @@ extends Resource
 #@export_group("")
 
 # TODO: vfx should define variables needed here
-#@export var sprite: Texture2D
+@export var texture: Texture2D
 
 var speed : int
 var focused_speed : int

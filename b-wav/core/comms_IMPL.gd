@@ -17,6 +17,8 @@ extends Node
 # i can only imagine the comms layer parenting everything
 # considering everything needs access to the entities 
 
+var _isready : bool = false
+
 
 # only bullets are really created dynamically & potentially cause lag...
 static var bp : BulletPool
@@ -41,7 +43,6 @@ func _ready() -> void:
 	
 	renderer = Singleton.RENDERER
 	
-	
 	# do initialization of bullet pool (NOT made of nodes)
 	bp = BulletPool.new()
 	for i in 32:
@@ -56,6 +57,15 @@ func _ready() -> void:
 	const SPAWN_OFFSET : int = 100
 	characters.append( Character.new(%Kat.def, Vector2i(-SPAWN_OFFSET, 0) ))
 	characters.append( Character.new(%Kat.def, Vector2i(SPAWN_OFFSET, 0) ))
+	
+	
+	# add the representative character sprites as nodes to renderer
+	#	 the origin node2D in scenetree should not be modified !!
+	renderer.comms_init(%Origin)
+	
+	
+	_isready = true
+
 
 
 
@@ -63,6 +73,9 @@ func _ready() -> void:
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta : float) -> void:
+	if not _isready:
+		return
+	
 	logic.process()
 	phy.process()
 	
@@ -75,4 +88,11 @@ func _physics_process(delta : float) -> void:
 
 # per frame rendering
 func _process(delta: float) -> void:
+	if not _isready:
+		# this actually mattesrs... which is fucked up to think about
+		# why would godot be doing stuff when things havent even readied
+		# why
+		return
+	
+	
 	renderer.process(delta)

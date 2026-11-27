@@ -7,7 +7,7 @@ static var GAME_LOGIC : GameLogic
 static var RENDERER : Renderer
 
 
-
+static var BULLET_REGISTRY : BulletTextureRegistry
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +18,11 @@ func _ready() -> void:
 	GAME_LOGIC.init()
 	
 	RENDERER = Renderer.new()
+	
+	
+	#	 might want to load only what's needed
+	#	not that we have that many different characters anyhow
+
 	
 
 # might want some stuff to update ...

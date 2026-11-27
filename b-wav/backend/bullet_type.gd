@@ -10,11 +10,12 @@ extends Resource
 var speed : int
 var radius : int
 
-var sprite : Sprite2D
-# apparently can do instanced rendering w/ this
-# maybe a AnimatedSprite2D ...
+# same int to index into BulletTextureRegistry mesh,
+# same int field that bullet entity has
+var sprite : int
 
-func _init(s : int, r : int, spr : Sprite2D):
+
+func _init(s : int, r : int, spr : int):
 	speed = s
 	radius = r
 	sprite = spr

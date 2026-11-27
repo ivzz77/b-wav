@@ -1,6 +1,9 @@
 class_name PowerBulletType
 extends Resource
 
+# FOR USE IN GAME LOGIC SCRIPTS
+
+
 # is in fact a different kind of thing than BulletType
 # a LIST of BulletTypes parameterized by power, pretty much
 

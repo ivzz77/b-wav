@@ -5,12 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bqid2clonoy57" path="res://assets/claw_2.png" id="3_ho5vr"]
 [ext_resource type="Texture2D" uid="uid://c2avqfy3yick3" path="res://assets/claw_3.png" id="4_fmiyy"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_2i0yf"]
-
-[sub_resource type="MultiMesh" id="MultiMesh_wq5eg"]
-mesh = SubResource("QuadMesh_2i0yf")
-
-[node name="Kat" type="Node2D" unique_id=1619230246 node_paths=PackedStringArray("claw_spr")]
+[node name="Kat" type="Node" unique_id=167689032 node_paths=PackedStringArray("claw_spr")]
 script = ExtResource("1_wq5eg")
 claw_spr = [null, NodePath("claw/claw1"), NodePath("claw/claw2"), NodePath("claw/claw3"), null, null]
 
@@ -30,7 +25,3 @@ offset = Vector2(-42, 0)
 visible = false
 texture = ExtResource("4_fmiyy")
 offset = Vector2(-56, 0)
-
-[node name="MultiMeshInstance2D" type="MultiMeshInstance2D" parent="claw" unique_id=1325358754]
-multimesh = SubResource("MultiMesh_wq5eg")
-texture = ExtResource("2_2i0yf")

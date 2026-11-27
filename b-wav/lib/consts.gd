@@ -15,15 +15,19 @@ extends Node
 
 
 
-
 # thus, this is my solution for a problem that shouldn't exist
+
+
+
 
 
 static var DIR_RIGHT : intdir = intdir.new(0)
 static var PROP_ONE : intprop = intprop.new(intprop.PROP_SUBDIVISION)
 
 static var EMPTY_B : Bullet = Bullet.new()
-static var EMPTY_B_TYPE : BulletType = BulletType.new(0,0,null)
+static var EMPTY_B_TYPE : BulletType = BulletType.new(0,0,   0)
+# 0 will be reserved for the null sprite in BulletTextureRegistry
+
 static var MOUSE_MOTION : InputEventMouseMotion = InputEventMouseMotion.new()
 
 # as far as i know, autoloading happens before anything else
