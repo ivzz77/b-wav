@@ -21,6 +21,7 @@ magical's rewrite of the month old vfx branch...
 
 ## todos
 * implement the rest of the game logic + communication layer stuff, need to hook up the backend from merge-test though.   
+* reuse the capsule vs capsule tests for swept collision, currently only doing discrete checks in the testing suite.   
 
 https://github.com/user-attachments/assets/57448dd7-1bf4-4a2a-adda-fbdd340cb2ed
 
