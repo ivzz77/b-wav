@@ -36,13 +36,13 @@ func _stamp() -> int:
 func _next_k(stamp: int, key: int) -> int:
 	# It's the current tick, so just bump the current tick lol
 	if stamp == _count_stamp: return _bump(key)
-
+	
 	_count_stamp = stamp
 	_counts.clear()
-
+	
 	# Since we don't need to retrack anything, this is fine
 	if not _counts_dirty: return _bump(key)
-
+	
 	# Since the counts (from some previous reconcilation) changed
 	# we have to reevaluate
 	_counts_dirty = false
@@ -58,7 +58,7 @@ func _next_k(stamp: int, key: int) -> int:
 func _bump(key: int) -> int:
 	var k: int = _counts.get(key, 0)
 	_counts[key] = k + 1
-
+	
 	return k
 
 # Find annotation [param field] in the corresponding tick
@@ -77,13 +77,13 @@ func spawn_character(type: int, id: int, position: Vector2i) -> int:
 	# Stamp when this character respawned
 	var stamp = _stamp()
 	var character = Character.new(type, position, stamp)
-
+	
 	character.spawned_at = stamp
 	character.despawned_at = NEVER
-
+	
 	_characters[id] = character
 	character_respawned.emit(id)
-
+	
 	return id
 
 ## Despawn a character. This entity will no longer simulate and may be destroyed
@@ -110,7 +110,7 @@ func spawn_attack(kind: int, owner: int, pose: Vector3i) -> int:
 	instance.id = (stamp << 16) | (owner_bits << 8) | _next_k(stamp, owner_bits)
 	instance.start = stamp
 	_attack_array.insert(instance, stamp, stamp + instance.length)
-
+	
 	return instance.id
 
 ## Spawns a new bullet. Returns a Token representing that bullet. The path that
@@ -125,7 +125,7 @@ func spawn_bullet(owner: int, instance: BulletInstance) -> int:
 	instance.owner = owner
 	instance.start = stamp
 	instance.end = NEVER
-
+	
 	_bullet_array.insert(instance, stamp, NEVER)
 	return instance.token
 
@@ -149,7 +149,7 @@ func _set_stray_end(bullet: BulletInstance, end: int) -> void:
 	# Removes the dynamic bullet from the array (for now)
 	_bullet_array.remove(bullet)
 	_bullet_array.insert(bullet, bullet.start, end)
-
+	
 	bullet.end = end
 
 ## Simulate the next tick. Positions of all entities are updated first, then
@@ -159,15 +159,16 @@ func simulate() -> void:
 	_in_step = true
 	before_character_tick.emit()
 	for id in _characters:
-		if _characters[id].despawned_at != NEVER: continue
-
-		# Since this character didn't despawn yet, we'll
-		# tick you.
-		_characters[id].tick(_tick, self)
-
+		var character = _characters[id]
+		if character.despawned_at != NEVER: continue
+		
+		# Since this character didn't despawn yet, we'll tick you.
+		character.tick(_tick, self)
+		character.prune_before(_tick - MAX_ROLLBACK)
+	
 	for stray in _bullet_array.query(tick):
 		stray.advance(_tick, self)
-
+	
 	_tick += 1
 	_in_step = false
 	_attack_array.prune_before(_tick - MAX_ROLLBACK)
@@ -183,7 +184,7 @@ func rollback(past_tick: int) -> bool:
 	# We pretend that anything that started after past_tick never happened.
 	# Also make sure that we respawn stuff from the previous tick so we can
 	# work with them
-
+	
 	# See if we can respawn or despawn the attacks
 	for attack in _attack_array.ending_after(past_tick):
 		if attack.start > past_tick:

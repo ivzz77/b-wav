@@ -200,10 +200,10 @@ func _stress_rollback() -> void:
 	if not world.rollback(now - ROLLBACK_DEPTH):
 		push_warning("rollback(): tick %d refused" % (now - ROLLBACK_DEPTH))
 		return
-
+	
 	for i in range(1):
 		world.simulate()
-
+	
 	#rollbacks += 1
 	#if _snapshot() != before:
 		#mismatches += 1

@@ -1,5 +1,9 @@
 class_name Character
 
+const CAPACITY = 128
+const MASK = CAPACITY - 1
+const PRUNE_MIN_AMOUNT = 5
+
 ## Character, basic linear velocity character solver.
 ## As such, it makes it stupidly easy to just create
 ## a piecewise function determining the path of the player.
@@ -9,48 +13,78 @@ var despawned_at = 0x7fffffff
 var spawned_at = 0
 var kind = 0
 
+# ring buffer of velocity changes, oldest at _head
 var _ticks = PackedInt64Array()
 var _velocities: Array[Vector2i] = []
+var _head = 0
+var _count = 0
+
 var _last_position: Vector2i
 var _last_timestep: int
+var _last_velocity = Vector2i.ZERO
 
 func _init(what: int, pos: Vector2i, t: int):
+	_ticks.resize(CAPACITY)
+	_velocities.resize(CAPACITY)
 	_last_position = pos
 	_last_timestep = t
 	kind = what
 
-func tick(_t: int, _world: PhysicsEngine) -> void:
-	pass
+func tick(_t: int, _world: PhysicsEngine) -> void: pass
+func _slot(i: int) -> int: return (_head + i) & MASK
 
 ## Sets the velocity of the player on tick [param t], with
 ## velocity [param v].
 func set_velocity(t: int, v: Vector2i) -> void:
-	_ticks.append(t)
-	_velocities.append(v)
+	var current = _velocities[_slot(_count - 1)] if _count > 0 else _last_velocity
+	if current == v: return
+
+	# remove the oldest change in to make room
+	if _count == CAPACITY: _remove_oldest()
+
+	var s = _slot(_count)
+	_ticks[s] = t - 1
+	_velocities[s] = v
+	_count += 1
+
+# Gets rid of the oldest element in the ring buffer and that'll be our
+# initial position + velocity to step from 
+func _remove_oldest() -> void:
+	var s = _head
+	_last_position += _last_velocity * (_ticks[s] - _last_timestep)
+	_last_timestep = _ticks[s]
+	_last_velocity = _velocities[s]
+	_head = (_head + 1) & MASK
+	_count -= 1
 
 ## Called on reconciliation, only set the active
 ## buffer during tick [param t].
 func rollback(t: int) -> void:
-	var n = _ticks.bsearch(t, false)
-	_ticks.resize(n)
-	_velocities.resize(n)
+	while _count > 0 and _ticks[_slot(_count - 1)] >= t:
+		_count -= 1
 
 ## Remove frames before tick [param t]
 func prune_before(t: int) -> void:
-	var n = _ticks.bsearch(t, false)
-	_ticks = _ticks.slice(n)
-	_velocities = _velocities.slice(n)
+	var n = 0
+	while n < _count and _ticks[_slot(n)] < t:
+		n += 1
+	if n < PRUNE_MIN_AMOUNT: return
+	for i in n:
+		_remove_oldest()
 
 ## Gets the position of the player at tick [param t]
 func get_position(t: int) -> Vector2i:
-	var p = _last_position
+	var pos = _last_position
 	var last = _last_timestep
-	var v = Vector2i.ZERO
-	
-	for i in _ticks.size():
-		if _ticks[i] > t: break
-		p += v * (_ticks[i] - last)
-		last = _ticks[i]
-		v = _velocities[i]
+	var vel = _last_velocity
 
-	return p + v * (t - last)
+	for i in _count:
+		var s = _slot(i)
+		if _ticks[s] > t: break
+		
+		# integrate
+		pos += vel * (_ticks[s] - last)
+		last = _ticks[s]
+		vel = _velocities[s]
+
+	return pos + vel * (t - last)
