@@ -41,9 +41,6 @@ signal character_health_changed(token: int, health: int)
 ## stunned)
 signal character_movement_mode_changed(token: int, state: int)
 
-## Emitted when a new bullet is created.
-signal bullet_created(token: int, type: BulletType)
-
 ## Emitted when an entity is removed from the world. The entity should no longer
 ## be visible and create a destruction effect if it has one. The entity will no
 ## longer be simulated, so calls to [method get_entity_transform] with

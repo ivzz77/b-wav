@@ -5,10 +5,6 @@
 .godot/
 .nomedia
 
-/android/
-
-
-
 # Godot-specific ignores
 .import/
 export.cfg
