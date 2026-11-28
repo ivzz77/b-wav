@@ -22,6 +22,8 @@ func _ready() -> void:
 	
 	#	 might want to load only what's needed
 	#	not that we have that many different characters anyhow
+	BULLET_REGISTRY = BulletTextureRegistry.new()
+	# init should be handled in comms layer for this
 
 	
 

@@ -11,7 +11,7 @@ extends CharacterLogic
 # contains defintions for various atk & bullet types...
 # & kat character entity itself ig
 
-var def : CharacterDefinition
+@export var def : CharacterDefinition
 var claw : PowerBulletType
 
 # is still 0 indexed, but by power
@@ -30,15 +30,19 @@ var CLAW5 : int
 
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+# following the godot convention even though it sucks ass
+# exports -> init -> ready
+# the scene itself w/ its structure will be loaded, but the comms layer
+# doing the loading must still manually call init->ready in order
+func ready() -> void:
 #	i do not understand
 # https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_exports.html
 # the export should happen before _ready()
 	print("readying kat, claw_spr is ", claw_spr )
 	
 	#	subject to change!!!
-	def = CharacterDefinition.new("kat", 48, 24)
+	#	this is @exported now...
+	#def = CharacterDefinition.new("kat", 48, 24)
 	
 	
 	claw = PowerBulletType.new()
@@ -56,18 +60,16 @@ func _ready() -> void:
 	pass
 
 # should call after bullet textures are ready(registered)
-func _ready2():
+# so, after BTRegistry calls init()
+func init():
 	#	how utterly nightmarish
 	# all i wanted was to use the @export feature to conveniently set sprites
 	# godot giving me all the reasons to not ever touch the Node system
-	CLAW1 = %BulletTextureRegistry.indices["CLAW1"]
-	CLAW2 = %BulletTextureRegistry.indices["CLAW2"]
-	CLAW3 = %BulletTextureRegistry.indices["CLAW3"]
-	CLAW4 = %BulletTextureRegistry.indices["CLAW4"]
-	CLAW5 = %BulletTextureRegistry.indices["CLAW5"]
-	
-	
-	#	 
+	CLAW1 = C.tx_reg.indices["CLAW1"]
+	CLAW2 = C.tx_reg.indices["CLAW2"]
+	CLAW3 = C.tx_reg.indices["CLAW3"]
+	CLAW4 = C.tx_reg.indices["CLAW4"]
+	CLAW5 = C.tx_reg.indices["CLAW5"]
 	
 	
 	pass

@@ -2,10 +2,7 @@
 
 [ext_resource type="Script" uid="uid://banuurpw6j6j4" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="Script" uid="uid://cq4wjng4v554p" path="res://core/comms_IMPL.gd" id="2_7mycd"]
-[ext_resource type="Script" uid="uid://rhjfwpcpw3f1" path="res://backend/internal/token_service.gd" id="3_272bh"]
-[ext_resource type="Script" uid="uid://bl3o52a0uqg73" path="res://render/bullet_texture_registry.gd" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://brp188w2g5ata" path="res://src/frontend/scenes/main_menu_mockup.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://bq8dekq5xqg0i" path="res://character/kat/kat.tscn" id="6_7mycd"]
 
 [node name="Game" type="Node" unique_id=2068392402]
 script = ExtResource("1_lquwl")
@@ -14,17 +11,6 @@ script = ExtResource("1_lquwl")
 
 [node name="communication layer" type="Node" parent="." unique_id=478394094]
 script = ExtResource("2_7mycd")
-
-[node name="token service" type="Node" parent="communication layer" unique_id=640998558]
-script = ExtResource("3_272bh")
-
-[node name="BulletTextureRegistry" type="Node" parent="communication layer/token service" unique_id=204600598]
-unique_name_in_owner = true
-script = ExtResource("4_7mycd")
-
-[node name="Kat" parent="communication layer/token service/BulletTextureRegistry" unique_id=1619230246 node_paths=PackedStringArray("claw_spr") instance=ExtResource("6_7mycd")]
-unique_name_in_owner = true
-claw_spr = []
 
 [node name="Origin" type="Node2D" parent="communication layer" unique_id=1671046478]
 unique_name_in_owner = true

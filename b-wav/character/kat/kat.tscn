@@ -2,12 +2,25 @@
 
 [ext_resource type="Script" uid="uid://cvs4x1oy42voc" path="res://character/kat/kat_logic.gd" id="1_wq5eg"]
 [ext_resource type="Texture2D" uid="uid://d1andv5lo5crh" path="res://assets/claw_1.png" id="2_2i0yf"]
+[ext_resource type="Script" uid="uid://byxnq7ct8bhhq" path="res://backend/ability_definition.gd" id="2_fmiyy"]
 [ext_resource type="Texture2D" uid="uid://bqid2clonoy57" path="res://assets/claw_2.png" id="3_ho5vr"]
+[ext_resource type="Script" uid="uid://c6pcs4pyvatpb" path="res://backend/character_definition.gd" id="3_vavjk"]
 [ext_resource type="Texture2D" uid="uid://c2avqfy3yick3" path="res://assets/claw_3.png" id="4_fmiyy"]
+[ext_resource type="Texture2D" uid="uid://bk81ffyvvcqmy" path="res://assets/kat.png" id="4_vavjk"]
+[ext_resource type="Texture2D" uid="uid://dwskbscpehb5n" path="res://assets/icon.svg" id="5_2i0yf"]
+
+[sub_resource type="Resource" id="Resource_2i0yf"]
+script = ExtResource("3_vavjk")
+name = "kat"
+texture = ExtResource("4_vavjk")
+speed = 48
+focused_speed = 24
+metadata/_custom_type_script = "uid://c6pcs4pyvatpb"
 
 [node name="Kat" type="Node" unique_id=167689032 node_paths=PackedStringArray("claw_spr")]
 script = ExtResource("1_wq5eg")
-claw_spr = [null, NodePath("claw/claw1"), NodePath("claw/claw2"), NodePath("claw/claw3"), null, null]
+def = SubResource("Resource_2i0yf")
+claw_spr = [null, NodePath("claw/claw1"), NodePath("claw/claw2"), NodePath("claw/claw3"), NodePath("claw/claw4"), NodePath("claw/claw5")]
 
 [node name="claw" type="Node" parent="." unique_id=1361203494]
 
@@ -24,4 +37,14 @@ offset = Vector2(-42, 0)
 [node name="claw3" type="Sprite2D" parent="claw" unique_id=490664145]
 visible = false
 texture = ExtResource("4_fmiyy")
+offset = Vector2(-56, 0)
+
+[node name="claw4" type="Sprite2D" parent="claw" unique_id=617329565]
+visible = false
+texture = ExtResource("5_2i0yf")
+offset = Vector2(-56, 0)
+
+[node name="claw5" type="Sprite2D" parent="claw" unique_id=1532544590]
+visible = false
+texture = ExtResource("5_2i0yf")
 offset = Vector2(-56, 0)

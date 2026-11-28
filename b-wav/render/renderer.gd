@@ -82,7 +82,9 @@ func process(delta: float) -> void:
 			tx_mmesh(tx).set_instance_transform(_instance_count[tx], pos)
 	
 	# now make only this many visible
-	for tx in range(BulletTextureRegistry.textures.size()):
+	# oops need to skip 0th null sprite
+	# not sure if i really need it (its just for const EMPTY_B)
+	for tx in range(1, BulletTextureRegistry.textures.size()):
 		tx_mmesh(tx).visible_instance_count = _instance_count[tx]
 
 
@@ -100,6 +102,7 @@ func reset__instance_count():
 
 # just shorthand for this long thing
 func tx_mmesh(tx : int) -> MultiMesh:
+	#print("accessing texture ", tx)
 	return BulletTextureRegistry.textures[tx].mesh.multimesh
 
 func tx_offset(tx : int) -> Vector2:
