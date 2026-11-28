@@ -1,9 +1,11 @@
 extends Menu
 
 
+@onready var previous_menu: Menu = $"../Main"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	previous_menu = $"../Main"
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

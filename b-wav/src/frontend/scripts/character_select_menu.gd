@@ -42,7 +42,11 @@ func _on_kat_pressed() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	Signals.menu_transition.emit(play_menu)
+	if characters_selected == 0:
+		Signals.menu_transition.emit(play_menu)
+	else:
+		characters_selected -= 1
+		#Deselect character for that player
 
 
 func _on_select_button_pressed() -> void:
@@ -50,9 +54,6 @@ func _on_select_button_pressed() -> void:
 	if characters_selected < num_players:
 		#Set corresponding character to player
 		characters_selected += 1
-	
-	if characters_selected == num_players:
+	elif characters_selected == num_players:
 		Signals.match_start.emit()
-		return
-	
 	

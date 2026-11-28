@@ -6,7 +6,7 @@ extends Menu
 @onready var quit: Button = $PanelContainer/MarginContainer/VBoxContainer/Quit
 
 #Menus it can travel to
-var play_menu:Menu
+@onready var play_menu: Menu = $"../PlayMenu"
 @onready var settings_menu:Menu = $"../Settings"
 @onready var credits_menu: Menu = $"../CreditsMenu"
 
@@ -21,8 +21,7 @@ func _process(delta: float) -> void:
 
 
 func _on_play_pressed() -> void:
-	pass
-	#Signals.menu_transition.emit(play_menu)
+	Signals.menu_transition.emit(play_menu)
 	#Signal to menu manager to transition to play menu
 
 
