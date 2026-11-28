@@ -78,6 +78,7 @@ func spawn_character(type: int, id: int, position: Vector2i) -> int:
 	var stamp = _stamp()
 	var character = Character.new(type, position, stamp)
 	
+	character.id = id
 	character.spawned_at = stamp
 	character.despawned_at = NEVER
 	

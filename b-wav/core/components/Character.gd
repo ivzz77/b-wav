@@ -4,6 +4,8 @@ const CAPACITY = 128
 const MASK = CAPACITY - 1
 const PRUNE_MIN_AMOUNT = 5
 
+const PLAYER_RADIUS = 6.0
+
 ## Character, basic linear velocity character solver.
 ## As such, it makes it stupidly easy to just create
 ## a piecewise function determining the path of the player.
@@ -12,6 +14,7 @@ const PRUNE_MIN_AMOUNT = 5
 var despawned_at = 0x7fffffff
 var spawned_at = 0
 var kind = 0
+var id = -1
 
 # ring buffer of velocity changes, oldest at _head
 var _ticks = PackedInt64Array()
@@ -19,9 +22,12 @@ var _velocities: Array[Vector2i] = []
 var _head = 0
 var _count = 0
 
+var _was_hit = false
 var _last_position: Vector2i
 var _last_timestep: int
 var _last_velocity = Vector2i.ZERO
+
+func _slot(i: int) -> int: return (_head + i) & MASK
 
 func _init(what: int, pos: Vector2i, t: int):
 	_ticks.resize(CAPACITY)
@@ -30,8 +36,27 @@ func _init(what: int, pos: Vector2i, t: int):
 	_last_timestep = t
 	kind = what
 
-func tick(_t: int, _world: PhysicsEngine) -> void: pass
-func _slot(i: int) -> int: return (_head + i) & MASK
+static var _pos = PackedInt32Array()
+static var _rot = PackedFloat32Array()
+static var _type = PackedInt32Array()
+static var _age = PackedInt32Array()
+
+## Ran on simulation, per tick lol
+func tick(_t: int, _world: PhysicsEngine) -> void:
+	_world.query_bullets(_pos, _rot, _type, _age)
+	
+	var pos = Vector2(_world.get_character_position(id))
+	var who = -1
+	for i in range(_type.size()):
+		var R: float = PLAYER_RADIUS + BulletData.BULLET_RADIUS.get(_type[i], 8.0)
+		if pos.distance_squared_to(Vector2(_pos[i * 2], _pos[i * 2 + 1])) <= R * R:
+			who = i
+			break
+	
+	if who != -1 and not _was_hit:
+		_world.character_collided_bullet.emit(id, _type[who])
+		print("lol")
+	_was_hit = who != -1
 
 ## Sets the velocity of the player on tick [param t], with
 ## velocity [param v].
