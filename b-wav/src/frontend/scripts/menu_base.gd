@@ -1,7 +1,6 @@
 class_name Menu
 extends Control
 
-var previous_menu:Menu
 var is_transition:bool = false
 
 func _switched_to() -> void:

@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dshjupjbpec4y" path="res://src/frontend/scripts/character_select_menu.gd" id="1_o3cej"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3cej"]
+bg_color = Color(0.8908559, 0.45162356, 0.40557712, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nelv4"]
+
 [node name="CharacterSelectMenu" type="Control" unique_id=900492717]
 layout_mode = 3
 anchors_preset = 15
@@ -19,15 +24,54 @@ offset_bottom = 40.0
 [node name="CharacterArea" type="PanelContainer" parent="VBoxContainer" unique_id=1262653423]
 layout_mode = 2
 
-[node name="Characters" type="GridContainer" parent="VBoxContainer/CharacterArea" unique_id=2058911443]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CharacterArea" unique_id=729151851]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Characters" type="GridContainer" parent="VBoxContainer/CharacterArea/MarginContainer" unique_id=2058911443]
 layout_mode = 2
 columns = 2
 
-[node name="Kat" type="Button" parent="VBoxContainer/CharacterArea/Characters" unique_id=614890183]
+[node name="KatCharacterSelectBorder" type="PanelContainer" parent="VBoxContainer/CharacterArea/MarginContainer/Characters" unique_id=1477484499]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o3cej")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CharacterArea/MarginContainer/Characters/KatCharacterSelectBorder" unique_id=25213409]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterArea/MarginContainer/Characters/KatCharacterSelectBorder/MarginContainer" unique_id=367427931]
 layout_mode = 2
 
-[node name="Character2" type="Button" parent="VBoxContainer/CharacterArea/Characters" unique_id=145916365]
+[node name="Kat" type="Button" parent="VBoxContainer/CharacterArea/MarginContainer/Characters/KatCharacterSelectBorder/MarginContainer/PanelContainer" unique_id=614890183]
 layout_mode = 2
+text = "KAT 
+PLACEHOLDER TEXT"
+
+[node name="Character2SelectBorder2" type="PanelContainer" parent="VBoxContainer/CharacterArea/MarginContainer/Characters" unique_id=207288307]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nelv4")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CharacterArea/MarginContainer/Characters/Character2SelectBorder2" unique_id=1823952952]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterArea/MarginContainer/Characters/Character2SelectBorder2/MarginContainer" unique_id=586962052]
+layout_mode = 2
+
+[node name="Character2" type="Button" parent="VBoxContainer/CharacterArea/MarginContainer/Characters/Character2SelectBorder2/MarginContainer/PanelContainer" unique_id=145916365]
+layout_mode = 2
+text = "CHARACTER2 
+PLACEHOLDER TEXT"
 
 [node name="NavigationButtonsArea" type="PanelContainer" parent="VBoxContainer" unique_id=1041546959]
 layout_mode = 2
@@ -45,6 +89,7 @@ theme_override_constants/margin_bottom = 10
 [node name="BackButton" type="Button" parent="VBoxContainer/NavigationButtonsArea/NavigationButtonsArea/MarginContainer" unique_id=1192902524]
 layout_mode = 2
 text = "BACK"
+icon_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/NavigationButtonsArea/NavigationButtonsArea" unique_id=1829233826]
 layout_mode = 2
@@ -56,7 +101,8 @@ theme_override_constants/margin_bottom = 10
 [node name="SelectButton" type="Button" parent="VBoxContainer/NavigationButtonsArea/NavigationButtonsArea/MarginContainer2" unique_id=737420451]
 layout_mode = 2
 text = "SELECT"
+icon_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/CharacterArea/Characters/Kat" to="." method="_on_kat_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterArea/MarginContainer/Characters/KatCharacterSelectBorder/MarginContainer/PanelContainer/Kat" to="." method="_on_kat_pressed"]
 [connection signal="pressed" from="VBoxContainer/NavigationButtonsArea/NavigationButtonsArea/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/NavigationButtonsArea/NavigationButtonsArea/MarginContainer2/SelectButton" to="." method="_on_select_button_pressed"]

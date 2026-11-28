@@ -4,18 +4,22 @@ extends Control
 @onready var settings_menu:Control = $Settings
 @onready var credits_menu:Control = $CreditsMenu
 @onready var play_menu: Menu = $PlayMenu
+@onready var character_select_menu: Menu = $CharacterSelectMenu
 @onready var stats_menu: Menu = $StatsMenu
 
-
 var currentMenu:Menu
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	main_menu.visible = true
 	currentMenu = main_menu
+	
 	settings_menu.visible = false
 	credits_menu.visible = false
 	play_menu.visible = false
+	character_select_menu.visible = false
+	stats_menu.visible = false
 	
 	#Attach signals
 	Signals.menu_transition.connect(_next_menu_pressed)
@@ -40,16 +44,17 @@ func _next_menu_pressed(next_menu:Menu) -> void:
 	#In a sense back button is also just another form of "next menu", so can have back button do the same here too
 
 func _prepare_match() -> void:
-	currentMenu._switched_from()
 	#Turn off current menu's music
+	currentMenu._switched_from()
 	
-	#To prepare for next menu being the stats menu
+	#Prepare for next menu being the stats menu (or a pause menu)
 	currentMenu = stats_menu
 	
 	#Give control over to C layer (double check)
 
 	
 func _end_of_match() -> void:
+	currentMenu = stats_menu
 	currentMenu._switched_to()
 
 #When button of menu pressed, don't want it to directly trigger transition there, instead send signals to menu_manager to handle
