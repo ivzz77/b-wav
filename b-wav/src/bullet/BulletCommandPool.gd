@@ -17,10 +17,10 @@ class BulletProxy:
 	var center: float
 	var start: float
 	
-	var kind: Bullet.BulletKind
+	var kind: BulletKind.BulletKind
 	var end: float
 
-	func _init(_kind: Bullet.BulletKind, _start: float, _end: float, _piecewise: Piecewise) -> void:
+	func _init(_kind: BulletKind.BulletKind, _start: float, _end: float, _piecewise: Piecewise) -> void:
 		self.piecewise = _piecewise
 		self.center = (_start + _end) * 0.5
 		self.start = _start
@@ -33,7 +33,7 @@ class BulletResult:
 	var position: Vector4
 	var start: float
 	
-	var kind: Bullet.BulletKind
+	var kind: BulletKind.BulletKind
 	var end: float
 	
 	func _init(bullet: BulletProxy, _position: Vector4, _start: float) -> void:
@@ -42,7 +42,7 @@ class BulletResult:
 		self.end = bullet.end + _start
 		self.kind = bullet.kind
 
-var max_particles: Dictionary[Bullet.BulletKind, int] = {}
+var max_particles: Dictionary[BulletKind.BulletKind, int] = {}
 var interval_list: Array[BulletProxy] = []
 var blocks: Array[Array] = []
 var length: float = 0.0
@@ -89,14 +89,14 @@ func wait(what: float) -> BulletCommandPool:
 	return self
 
 # Adds a bullet into the command list
-func summon(kind: Bullet.BulletKind, lifetime: float, path: Piecewise) -> BulletCommandPool:
+func summon(kind: BulletKind.BulletKind, lifetime: float, path: Piecewise) -> BulletCommandPool:
 	interval_list.append(BulletProxy.new(kind, _wait_delay, _wait_delay + lifetime, path))
 	length = max(length, _wait_delay + lifetime + 1.0)
 	return self
 
 func commit() -> BulletCommandPool:
 	# Now, create the decomposed interval tree :3
-	var active: Dictionary[Bullet.BulletKind, Array] = {}
+	var active: Dictionary[BulletKind.BulletKind, Array] = {}
 	for idx in range(interval_list.size()):
 		var interval = interval_list[idx]
 		

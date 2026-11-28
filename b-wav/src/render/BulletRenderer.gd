@@ -2,7 +2,7 @@ class_name BulletRenderer
 
 # magical
 
-var object_pools: Dictionary[Bullet.BulletKind, RenderObjectPool] = {}
+var object_pools: Dictionary[BulletKind.BulletKind, RenderObjectPool] = {}
 var active_command_pools: IntervalArray = IntervalArray.new()
 
 var parent: Node2D
@@ -10,7 +10,7 @@ var parent: Node2D
 func _init(_parent: Node2D) -> void:
 	self.parent = _parent
 
-func add_object_pool(name: Bullet.BulletKind, rect: Sprite2D) -> void:
+func add_object_pool(name: BulletKind.BulletKind, rect: Sprite2D) -> void:
 	# Testing for now, needs a proper scheduler
 	# to handle object pooling soon.
 	object_pools[name] = RenderObjectPool.new(rect, self.parent)
