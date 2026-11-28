@@ -25,9 +25,13 @@ columns = 2
 
 [node name="Kat" type="Button" parent="VBoxContainer/CharacterArea/Characters" unique_id=614890183]
 layout_mode = 2
+text = "KAT 
+PLACEHOLDER TEXT"
 
 [node name="Character2" type="Button" parent="VBoxContainer/CharacterArea/Characters" unique_id=145916365]
 layout_mode = 2
+text = "CHARACTER2 
+PLACEHOLDER TEXT"
 
 [node name="NavigationButtonsArea" type="PanelContainer" parent="VBoxContainer" unique_id=1041546959]
 layout_mode = 2
@@ -45,6 +49,7 @@ theme_override_constants/margin_bottom = 10
 [node name="BackButton" type="Button" parent="VBoxContainer/NavigationButtonsArea/NavigationButtonsArea/MarginContainer" unique_id=1192902524]
 layout_mode = 2
 text = "BACK"
+icon_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/NavigationButtonsArea/NavigationButtonsArea" unique_id=1829233826]
 layout_mode = 2
@@ -56,6 +61,7 @@ theme_override_constants/margin_bottom = 10
 [node name="SelectButton" type="Button" parent="VBoxContainer/NavigationButtonsArea/NavigationButtonsArea/MarginContainer2" unique_id=737420451]
 layout_mode = 2
 text = "SELECT"
+icon_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/CharacterArea/Characters/Kat" to="." method="_on_kat_pressed"]
 [connection signal="pressed" from="VBoxContainer/NavigationButtonsArea/NavigationButtonsArea/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
